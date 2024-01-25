@@ -1,0 +1,31 @@
+@prefix :<example.org/>
+
+# The prefixes of health data standards (incorrect so temporarily used)
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
+@prefix cdisc: <https://www.cdisc.org/> .
+@prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
+@prefix opehr: <https://ckm.openehr.org/ckm/archetypes/> .
+
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+@prefix loinc: <https://loinc.org/> .
+@prefix drugc: <https://drugcentral.org/drugcard/> .
+
+# FHIR 
+
+
+# CDISC 
+
+
+# OMOP
+:omop_patient_01
+    # Losartan 50 MG [DAIHAN LOSARTAN POTASSIUM] 
+    omop:drug_concept_id <https://athena.ohdsi.org/search-terms/terms/42951041> .
+
+# openEHR 
+
+
+# Phenopacket 
+:pheno_patient_01
+    # Losartan
+    pheno:treatment_agent drugc:1610 .

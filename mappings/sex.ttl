@@ -1,0 +1,47 @@
+# The prefixes of commonly used vocabularies
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix umls: <http://www.nlm.nih.gov/research/umls/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+# The prefixes of health data standards (incorrect so temporarily used)
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
+@prefix cdisc: <https://www.cdisc.org/> .
+@prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
+@prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
+
+# The prefixes of health data standards are not correct
+@prefix concept: <http://ex.org/conceptual_node/> .
+
+fhir:birth_sex 
+    skos:narrowMatch cdisc:sdtm_sex .
+    skos:narrowMatch omop:gender_concept_id .
+    skos:narrowMatch openehr:sex_assigned_at_birth .
+    skos:narrowMatch pheno:sex .
+    skos:narrowMatch pheno:karyotypic_sex .
+
+omop:gender_concept_id
+    skos:narrowMatch cdisc:sdtm_sex .
+    skos:narrowMatch openehr:sex_assigned_at_birth .
+    skos:narrowMatch pheno:sex .
+    skos:narrowMatch pheno:karyotypic_sex .
+
+cdisc:sdtm_sex  
+    skos:exactMatch cdisc:cdash_sex .
+    skos:narrowMatch openehr:sex_assigned_at_birth .
+    skos:relatedMatch pheno:sex .
+    skos:relatedMatch pheno:karyotypic_sex .
+
+openehr:sex_assigned_at_birth 
+    skos:relatedMatch pheno:sex .
+    skos:relatedMatch pheno:karyotypic_sex .
+
+openehr:sex 
+    skos:relatedMatch pheno:karyotypic_sex .
+
+
+
