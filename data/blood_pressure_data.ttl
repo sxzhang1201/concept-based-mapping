@@ -17,26 +17,6 @@
 :fhir_patient_02 
     fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F>  .
 
-:fhir_patient_03
-    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH>  .
-
-:fhir_patient_04 
-    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK> .
-
-:fhir_patient_05
-    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU> .
-
-:fhir_patient_06
-    fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#male> .
-
-:fhir_patient_07
-    fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#female> .
-
-:fhir_patient_08
-    fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#others> .
-
-:fhir_patient_09
-    fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#unknown> .
 
 # OMOP 
 :omop_patient_01
@@ -45,26 +25,6 @@
 :omop_patient_02
     omop:gender_concept_id <https://athena.ohdsi.org/search-terms/terms/8532>  .
 
-:omop_patient_03
-    omop:observation_concept_id_as_gender loinc:LA22878-5 . 
-
-:omop_patient_04
-    omop:observation_concept_id_as_gender loinc:LA22879-3 . 
-
-:omop_patient_05
-    omop:observation_concept_id_as_gender loinc:LA22880-1 . 
-
-:omop_patient_06
-    omop:observation_concept_id_as_gender loinc:LA22881-9 . 
-
-:omop_patient_07
-    omop:observation_concept_id_as_gender loinc:LA22882-7 . 
-
-:omop_patient_08
-    omop:observation_concept_id_as_gender loinc:LA46-8 . 
-
-:omop_patient_09
-    omop:observation_concept_id_as_gender loinc:LA20384-6 . 
 
 # CDISC 
 :cdisc_patient_01
@@ -75,14 +35,6 @@
     # female
     cdisc:sdtm_sex ncit:C16576  .
 
-:cdisc_patient_03
-    # unknown
-    cdisc:sdtm_sex  ncit:C17998  .
-
-:cdisc_patient_04
-    # undifferentiated
-    cdisc:sdtm_sex ncit:C45908  .
-
 
 # openEHR 
 :openehr_patient_01
@@ -91,26 +43,6 @@
 :openehr_patient_02
     openehr:sex_assigned_at_birth "Female"  .
 
-:openehr_patient_03
-    openehr:sex_assigned_at_birth "Intersex"  .
-
-:openehr_patient_04
-    openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#male> .
-
-:openehr_patient_05
-    openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#female> .
-
-:openehr_patient_06
-    openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#others> .
-
-:openehr_patient_07
-    openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#unknown> .
-
-:openehr_patient_08
-    openehr:legal_gender "Male"  .
-
-:openehr_patient_09
-    openehr:legal_gender "Female"  .
 
 # Phenopacket 
 :pheno_patient_01 
@@ -119,31 +51,5 @@
 :pheno_patient_02
     pheno:karyotypic_sex  "XY"  .
 
-:pheno_patient_03
-    pheno:karyotypic_sex  "X0"  .
-
-:pheno_patient_04
-    pheno:karyotypic_sex  "XXY"  .
-
-:pheno_patient_05
-    pheno:karyotypic_sex  "XXX"  .
-
-:pheno_patient_06
-    pheno:karyotypic_sex  "XXYY"  .
-
-:pheno_patient_07
-    pheno:karyotypic_sex  "XXXY"  .
-
-:pheno_patient_08
-    pheno:karyotypic_sex  "XXXX"  .
-
-:pheno_patient_09 
-    pheno:karyotypic_sex  "XYY"  .
-
-:pheno_patient_10
-    pheno:karyotypic_sex  "OTHER_KARYOTYPE"  .
-
-:pheno_patient_11
-    pheno:karyotypic_sex  "UNKNOWN_KARYOTYPE"  .
 
 

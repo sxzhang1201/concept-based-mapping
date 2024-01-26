@@ -10,12 +10,17 @@
 @prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
 @prefix loinc: <https://loinc.org/> .
 @prefix drugc: <https://drugcentral.org/drugcard/> .
+@prefix snomedct: <http://snomed.info/sct/> .
 
 # FHIR 
-
+:fhir_patient_01 
+    # Product containing losartan (medicinal product)
+    fhir:medication snomedct:96309000 .
 
 # CDISC 
-
+:cdisc_patient_01 
+    # IBUPROFEN. Only a string is provided. 
+    cdisc:cdash_cmtrt "IBUPROFEN".
 
 # OMOP
 :omop_patient_01
@@ -23,7 +28,9 @@
     omop:drug_concept_id <https://athena.ohdsi.org/search-terms/terms/42951041> .
 
 # openEHR 
-
+:openehr_patient_01 
+    # Product containing losartan (medicinal product)
+    openehr:medication_summary snomedct:96309000 .
 
 # Phenopacket 
 :pheno_patient_01
