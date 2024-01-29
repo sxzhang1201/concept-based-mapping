@@ -120,7 +120,7 @@
     pheno:karyotypic_sex  "XY"  .
 
 :pheno_patient_03
-    pheno:karyotypic_sex  "X0"  .
+    pheno:karyotypic_sex  "XO"  .
 
 :pheno_patient_04
     pheno:karyotypic_sex  "XXY"  .
