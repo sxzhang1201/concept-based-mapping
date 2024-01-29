@@ -1,6 +1,6 @@
 @prefix :<example.org/>
 
-# The prefixes of health data standards (incorrect so temporarily used)
+# The prefixes of health data standards
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
 @prefix cdisc: <https://www.cdisc.org/> .
@@ -12,44 +12,59 @@
 
 # FHIR 
 :fhir_patient_01 
-    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>  .
+    fhir:systolic "110 mmHg" .
 
 :fhir_patient_02 
-    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F>  .
+    fhir:systolic "130 mmHg" .
+
+:fhir_patient_03
+    fhir:systolic "150 mmHg" .
 
 
 # OMOP 
 :omop_patient_01
-    omop:gender_concept_id <https://athena.ohdsi.org/search-terms/terms/8507>  .
+    omop:measurement_concept_systolic_blood_pressure "111 mmHg" .
 
 :omop_patient_02
-    omop:gender_concept_id <https://athena.ohdsi.org/search-terms/terms/8532>  .
+    omop:measurement_concept_systolic_blood_pressure "131 mmHg" .
+
+:omop_patient_02
+    omop:measurement_concept_systolic_blood_pressure "151 mmHg" .
 
 
 # CDISC 
 :cdisc_patient_01
-    # male
-    cdisc:sdtm_sex ncit:C20197 .
+    cdisc:sdtm_vstestcd_sysbp "112 mmHg".
 
 :cdisc_patient_02
-    # female
-    cdisc:sdtm_sex ncit:C16576  .
+    cdisc:sdtm_vstestcd_sysbp "132 mmHg". .
+
+:cdisc_patient_03
+    cdisc:sdtm_vstestcd_sysbp "152 mmHg". .
 
 
 # openEHR 
 :openehr_patient_01
-    openehr:sex_assigned_at_birth "Male"  .
+    openehr:systolic "113 mmHg"  .
 
 :openehr_patient_02
-    openehr:sex_assigned_at_birth "Female"  .
+    openehr:systolic "133 mmHg"  .
+
+:openehr_patient_02
+    openehr:systolic "153 mmHg"  .
 
 
 # Phenopacket 
 :pheno_patient_01 
-    pheno:karyotypic_sex  "XX"  .
+    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "114 mmHg"  .
 
 :pheno_patient_02
-    pheno:karyotypic_sex  "XY"  .
+    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "134 mmHg"  .
+
+:pheno_patient_03
+    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "154 mmHg"  .
+
+
 
 
 

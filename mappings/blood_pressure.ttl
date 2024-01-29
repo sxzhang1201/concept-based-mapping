@@ -7,15 +7,12 @@
 @prefix umls: <http://www.nlm.nih.gov/research/umls/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 
-# The prefixes of health data standards (incorrect so temporarily used)
+# The prefixes of health data standards 
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
 @prefix cdisc: <https://www.cdisc.org/> .
 @prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
 @prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
-
-# The prefixes of health data standards are not correct
-@prefix concept: <http://ex.org/conceptual_node/> .
 
 fhir:systolic
     skos:narrowMatch cdisc:sdtm_vstestcd_sysbp ;
