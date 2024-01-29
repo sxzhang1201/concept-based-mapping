@@ -22,7 +22,6 @@
 
 # CDISC 
 :cdisc_patient_01
-    # male
     cdisc:mhterm_diagnosis ncit:C26698 .
 
 # openEHR 

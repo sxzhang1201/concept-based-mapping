@@ -1,6 +1,6 @@
 @prefix :<example.org/>
 
-# The prefixes of health data standards (incorrect so temporarily used)
+# The prefixes of health data standards 
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
 @prefix cdisc: <https://www.cdisc.org/> .
