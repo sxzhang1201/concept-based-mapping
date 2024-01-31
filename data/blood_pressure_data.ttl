@@ -63,8 +63,3 @@
 
 :pheno_patient_03
     pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "154 mmHg"  .
-
-
-
-
-
