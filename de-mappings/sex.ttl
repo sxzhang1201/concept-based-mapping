@@ -15,26 +15,26 @@
 @prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
 
 fhir:birth_sex 
-    skos:narrowMatch cdisc:sdtm_sex .
-    skos:narrowMatch omop:gender_concept_id .
-    skos:narrowMatch openehr:sex_assigned_at_birth .
-    skos:narrowMatch pheno:sex .
+    skos:narrowMatch cdisc:sdtm_sex ;
+    skos:narrowMatch omop:gender_concept_id ;
+    skos:narrowMatch openehr:sex_assigned_at_birth ;
+    skos:narrowMatch pheno:sex ;
     skos:narrowMatch pheno:karyotypic_sex .
 
 omop:gender_concept_id
-    skos:narrowMatch cdisc:sdtm_sex .
-    skos:narrowMatch openehr:sex_assigned_at_birth .
-    skos:narrowMatch pheno:sex .
+    skos:narrowMatch cdisc:sdtm_sex ;
+    skos:narrowMatch openehr:sex_assigned_at_birth ;
+    skos:narrowMatch pheno:sex ;
     skos:narrowMatch pheno:karyotypic_sex .
 
 cdisc:sdtm_sex  
-    skos:exactMatch cdisc:cdash_sex .
-    skos:narrowMatch openehr:sex_assigned_at_birth .
-    skos:relatedMatch pheno:sex .
+    skos:exactMatch cdisc:cdash_sex ;
+    skos:narrowMatch openehr:sex_assigned_at_birth ;
+    skos:relatedMatch pheno:sex ;
     skos:relatedMatch pheno:karyotypic_sex .
 
 openehr:sex_assigned_at_birth 
-    skos:relatedMatch pheno:sex .
+    skos:relatedMatch pheno:sex ;
     skos:relatedMatch pheno:karyotypic_sex .
 
 openehr:sex 

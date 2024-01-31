@@ -7,14 +7,14 @@
 @prefix umls: <http://www.nlm.nih.gov/research/umls/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 
-# The prefixes of health data standards 
+# The prefixes of health data standards
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
 @prefix cdisc: <https://www.cdisc.org/> .
 @prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
 @prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
 
-fhir:condition_code 
+fhir:condition_code
     skos:exactMatch cdisc:mhterm_diagnosis ;
     skos:exactMatch omop:condition_concept_id ;
     skos:narrowMatch openehr:diagnosis_name ;
@@ -29,5 +29,5 @@ omop:condition_concept_id
     skos:narrowMatch openehr:diagnosis_name ;
     skos:narrowMatch pheno:disease_term .
 
-openehr:diagnosis_name ;
+openehr:diagnosis_name
     skos:narrowMatch pheno:disease_term .
