@@ -36,10 +36,10 @@
     cdisc:sdtm_vstestcd_sysbp "112 mmHg".
 
 :cdisc_patient_02
-    cdisc:sdtm_vstestcd_sysbp "132 mmHg". .
+    cdisc:sdtm_vstestcd_sysbp "132 mmHg".
 
 :cdisc_patient_03
-    cdisc:sdtm_vstestcd_sysbp "152 mmHg". .
+    cdisc:sdtm_vstestcd_sysbp "152 mmHg". 
 
 
 # openEHR 
