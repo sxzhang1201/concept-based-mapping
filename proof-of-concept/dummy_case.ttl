@@ -1,0 +1,148 @@
+@prefix : <http://example.org/patient/> .
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
+@prefix cdisc: <https://www.cdisc.org/> .
+@prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
+@prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix umls: <http://www.nlm.nih.gov/research/umls/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix loinc: <https://loinc.org/> .
+
+#################################################################
+#    SKOS Relations between data elements
+#################################################################
+
+umls:sex
+    skos:narrowMatch fhir:birth_sex ,
+        cdisc:sdtm_sex,
+        omop:gender_concept_id,
+        openehr:sex_assigned_at_birth,
+        pheno:sex,
+        pheno:karyotypic_sex .
+
+fhir:birth_sex
+    skos:narrowMatch cdisc:sdtm_sex ;
+    skos:narrowMatch omop:gender_concept_id ;
+    skos:narrowMatch openehr:sex_assigned_at_birth ;
+    skos:narrowMatch pheno:sex ;
+    skos:narrowMatch pheno:karyotypic_sex .
+
+omop:gender_concept_id
+    skos:narrowMatch cdisc:sdtm_sex ;
+    skos:narrowMatch openehr:sex_assigned_at_birth ;
+    skos:narrowMatch pheno:sex ;
+    skos:narrowMatch pheno:karyotypic_sex .
+
+cdisc:sdtm_sex
+    skos:exactMatch cdisc:cdash_sex ;
+    skos:narrowMatch openehr:sex_assigned_at_birth ;
+    skos:relatedMatch pheno:sex ;
+    skos:relatedMatch pheno:karyotypic_sex .
+
+openehr:sex_assigned_at_birth
+    skos:relatedMatch pheno:sex ;
+    skos:relatedMatch pheno:karyotypic_sex .
+
+openehr:sex
+    skos:relatedMatch pheno:karyotypic_sex .
+
+# Gender
+omop:observation_concept_id_as_gender
+    skos:narrowMatch fhir:administrative_gender ;
+    skos:narrowMatch openehr:administrative_gender ;
+    skos:narrowMatch openehr:legal_gender .
+
+openehr:administrative_gender
+    skos:narrowMatch fhir:administrative_gender ;
+    skos:relatedMatch openehr:legal_gender .
+
+openehr:legal_gender
+    skos:relatedMatch fhir:administrative_gender .
+
+umls:Gender
+    skos:narrowMatch omop:observation_concept_id_as_gender,
+    openehr:administrative_gender,
+    fhir:administrative_gender .
+
+
+#################################################################
+#    Synthetic data
+#################################################################
+
+# UMLS
+umls:male
+    skos:narrowMatch <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>,
+    <https://athena.ohdsi.org/search-terms/terms/8507>  ,
+    loinc:LA22878-5,
+    ncit:C20197,
+    pheno:XX  .
+
+
+# FHIR
+:fhir_patient_01
+    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>  .
+
+:fhir_patient_02
+    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F>  .
+
+:fhir_patient_03
+    fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH>  .
+
+:fhir_patient_06
+    fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#male> .
+
+:fhir_patient_07
+    fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#female> .
+
+# OMOP
+:omop_patient_01
+    omop:gender_concept_id <https://athena.ohdsi.org/search-terms/terms/8507>  .
+
+:omop_patient_02
+    omop:gender_concept_id <https://athena.ohdsi.org/search-terms/terms/8532>  .
+
+:omop_patient_03
+    omop:observation_concept_id_as_gender loinc:LA22878-5 .
+
+:omop_patient_04
+    omop:observation_concept_id_as_gender loinc:LA22879-3 .
+
+# CDISC
+:cdisc_patient_01
+    # male
+    cdisc:sdtm_sex ncit:C20197 .
+
+:cdisc_patient_02
+    # female
+    cdisc:sdtm_sex ncit:C16576  .
+
+:cdisc_patient_03
+    # unknown
+    cdisc:sdtm_sex  ncit:C17998  .
+
+
+# Phenopacket
+:pheno_patient_01
+    pheno:karyotypic_sex  pheno:XX  .
+
+:pheno_patient_02
+    pheno:karyotypic_sex  pheno:XY  .
+
+:pheno_patient_09
+    pheno:karyotypic_sex  pheno:XYY  .
+
+
+# openEHR
+:openehr_patient_04
+    openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#male> .
+
+:openehr_patient_05
+    openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#female> .
+
+

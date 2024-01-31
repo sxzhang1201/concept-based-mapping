@@ -1,0 +1,38 @@
+# Get all patients who has 'Sex' attribute --> 11 results
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+SELECT ?s ?p ?o
+WHERE {umls:sex skos:narrowMatch ?p .
+       ?s ?p ?o
+       }
+
+# Get all patients who has 'Gender' attribute  --> 6 results
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+SELECT ?s ?p ?o
+WHERE {umls:Gender skos:narrowMatch ?p .
+       ?s ?p ?o
+       }
+
+# Get all patients whose sex MUST be biological sex
+# which means -> OMOP:gender_concept_id and its narrower concepts
+# --> 2 OMOP + 3 Pheno + 3 CDISC = 8 patients
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+prefix omop: <https://ohdsi.github.io/CommonDataModel/>
+SELECT ?s ?p ?o
+WHERE {omop:gender_concept_id skos:narrowMatch*  ?p.
+       ?s ?p ?o
+      }
+
+# Get male patients --> 10 results
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+prefix omop: <https://ohdsi.github.io/CommonDataModel/>
+SELECT ?s ?p ?o
+WHERE {umls:male skos:narrowMatch  ?o.
+       ?s ?p ?o
+      }
