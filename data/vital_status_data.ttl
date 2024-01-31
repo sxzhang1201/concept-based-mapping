@@ -8,6 +8,7 @@
 @prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
 @prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
 @prefix loinc: <https://loinc.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # FHIR 
 :fhir_patient_01 
@@ -17,11 +18,11 @@
     fhir:patient_deceased 1.
 
 :fhir_patient_03
-    fhir:patient_deceased 2015-02-07T13:28:17^xsd:dateTime.
+    fhir:patient_deceased "2015-02-07T13:28:17"^xsd:dateTime.
 
 # OMOP 
 :omop_patient_01
-    omop:person_death_datetime 2001-01-025T12:25:00^xsd:dateTime.
+    omop:person_death_datetime "2001-01-025T12:25:00"^xsd:dateTime.
 
 # CDISC 
 :cdisc_patient_01
