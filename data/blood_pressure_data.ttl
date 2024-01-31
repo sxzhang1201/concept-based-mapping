@@ -1,13 +1,12 @@
-@prefix :<http://example.org/> .
+@prefix : <http://example.org/> .
 
 # The prefixes of health data standards
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
 @prefix cdisc: <https://www.cdisc.org/> .
 @prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
-@prefix opehr: <https://ckm.openehr.org/ckm/archetypes/> .
-
-@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+@prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
 @prefix loinc: <https://loinc.org/> .
 
 # FHIR 

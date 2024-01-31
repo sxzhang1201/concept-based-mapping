@@ -5,9 +5,8 @@
 @prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
 @prefix cdisc: <https://www.cdisc.org/> .
 @prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
-@prefix opehr: <https://ckm.openehr.org/ckm/archetypes/> .
-
-@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+@prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
 @prefix loinc: <https://loinc.org/> .
 @prefix drugc: <https://drugcentral.org/drugcard/> .
 @prefix snomedct: <http://snomed.info/sct/> .
