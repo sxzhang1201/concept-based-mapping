@@ -18,11 +18,11 @@
     fhir:patient_deceased 1.
 
 :fhir_patient_03
-    fhir:patient_deceased "2015-02-07T13:28:17"^xsd:dateTime.
+    fhir:patient_deceased "2015-02-07T13:28:17"^^xsd:dateTime.
 
 # OMOP 
 :omop_patient_01
-    omop:person_death_datetime "2001-01-025T12:25:00"^xsd:dateTime.
+    omop:person_death_datetime "2001-01-025T12:25:00"^^xsd:dateTime.
 
 # CDISC 
 :cdisc_patient_01

@@ -8,57 +8,58 @@
 @prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
 @prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
 @prefix loinc: <https://loinc.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # FHIR 
 :fhir_patient_01 
-    fhir:systolic "110 mmHg" .
+    fhir:systolic "110 mmHg"^^xsd:string .
 
 :fhir_patient_02 
-    fhir:systolic "130 mmHg" .
+    fhir:systolic "130 mmHg"^^xsd:string.
 
 :fhir_patient_03
-    fhir:systolic "150 mmHg" .
+    fhir:systolic "150 mmHg"^^xsd:string .
 
 
 # OMOP 
 :omop_patient_01
-    omop:measurement_concept_systolic_blood_pressure "111 mmHg" .
+    omop:measurement_concept_systolic_blood_pressure "111 mmHg"^^xsd:string .
 
 :omop_patient_02
-    omop:measurement_concept_systolic_blood_pressure "131 mmHg" .
+    omop:measurement_concept_systolic_blood_pressure "131 mmHg"^^xsd:string .
 
 :omop_patient_02
-    omop:measurement_concept_systolic_blood_pressure "151 mmHg" .
+    omop:measurement_concept_systolic_blood_pressure "151 mmHg"^^xsd:string .
 
 
 # CDISC 
 :cdisc_patient_01
-    cdisc:sdtm_vstestcd_sysbp "112 mmHg" .
+    cdisc:sdtm_vstestcd_sysbp "112 mmHg"^^xsd:string .
 
 :cdisc_patient_02
-    cdisc:sdtm_vstestcd_sysbp "132 mmHg" .
+    cdisc:sdtm_vstestcd_sysbp "132 mmHg"^^xsd:string .
 
 :cdisc_patient_03
-    cdisc:sdtm_vstestcd_sysbp "152 mmHg" .
+    cdisc:sdtm_vstestcd_sysbp "152 mmHg"^^xsd:string .
 
 
 # openEHR 
 :openehr_patient_01
-    openehr:systolic "113 mmHg"  .
+    openehr:systolic "113 mmHg"^^xsd:string  .
 
 :openehr_patient_02
-    openehr:systolic "133 mmHg"  .
+    openehr:systolic "133 mmHg"^^xsd:string  .
 
 :openehr_patient_02
-    openehr:systolic "153 mmHg"  .
+    openehr:systolic "153 mmHg"^^xsd:string  .
 
 
 # Phenopacket 
 :pheno_patient_01 
-    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "114 mmHg"  .
+    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "114 mmHg"^^xsd:string  .
 
 :pheno_patient_02
-    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "134 mmHg"  .
+    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "134 mmHg"^^xsd:string  .
 
 :pheno_patient_03
-    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "154 mmHg"  .
+    pheno:karyotyped_quantity_systolic_blood_pressuretypic_sex "154 mmHg"^^xsd:string  .
