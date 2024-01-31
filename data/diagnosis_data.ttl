@@ -1,4 +1,4 @@
-@prefix :<http://example.org/> .
+@prefix : <http://example.org/> .
 
 # The prefixes of health data standards
 @prefix fhir: <http://hl7.org/fhir/> .
