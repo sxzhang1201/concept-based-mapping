@@ -83,13 +83,13 @@
 
 # openEHR 
 :openehr_patient_01
-    openehr:sex_assigned_at_birth "Male"  .
+    openehr:sex_assigned_at_birth openehr:Male_sex  .
 
 :openehr_patient_02
-    openehr:sex_assigned_at_birth "Female"  .
+    openehr:sex_assigned_at_birth openehr:Female_sex  .
 
 :openehr_patient_03
-    openehr:sex_assigned_at_birth "Intersex"  .
+    openehr:sex_assigned_at_birth openehr:Intersex_sex  .
 
 :openehr_patient_04
     openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#male> .
@@ -104,43 +104,57 @@
     openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#unknown> .
 
 :openehr_patient_08
-    openehr:legal_gender "Male"  .
+    openehr:legal_gender openehr:Male_gender  .
 
 :openehr_patient_09
-    openehr:legal_gender "Female"  .
+    openehr:legal_gender openehr:Female_gender  .
 
 # Phenopacket 
 :pheno_patient_01 
-    pheno:karyotypic_sex  "XX"  .
+    pheno:karyotypic_sex  pheno:XX  .
 
 :pheno_patient_02
-    pheno:karyotypic_sex  "XY"  .
+    pheno:karyotypic_sex  pheno:XY  .
 
 :pheno_patient_03
-    pheno:karyotypic_sex  "XO"  .
+    pheno:karyotypic_sex  pheno:XO  .
 
 :pheno_patient_04
-    pheno:karyotypic_sex  "XXY"  .
+    pheno:karyotypic_sex  pheno:XXY  .
 
 :pheno_patient_05
-    pheno:karyotypic_sex  "XXX"  .
+    pheno:karyotypic_sex  pheno:XXX  .
 
 :pheno_patient_06
-    pheno:karyotypic_sex  "XXYY"  .
+    pheno:karyotypic_sex  pheno:XXYY  .
 
 :pheno_patient_07
-    pheno:karyotypic_sex  "XXXY"  .
+    pheno:karyotypic_sex  pheno:XXXY  .
 
 :pheno_patient_08
-    pheno:karyotypic_sex  "XXXX"  .
+    pheno:karyotypic_sex  pheno:XXXX  .
 
 :pheno_patient_09 
-    pheno:karyotypic_sex  "XYY"  .
+    pheno:karyotypic_sex  pheno:XYY  .
 
 :pheno_patient_10
-    pheno:karyotypic_sex  "OTHER_KARYOTYPE"  .
+    pheno:karyotypic_sex  pheno:OTHER_KARYOTYPE  .
 
 :pheno_patient_11
-    pheno:karyotypic_sex  "UNKNOWN_KARYOTYPE"  .
+    pheno:karyotypic_sex  pheno:UNKNOWN_KARYOTYPE  .
 
 
+# quick look at CARE-SM model 
+
+# Challenge 01: how to retrieve the attribute (fhir: administrative gender)?
+# Challenge 02: query for all males (related to male) for example
+# Challenge 03: Use it after the simple use case 
+:pheno_sio_patient_11
+    sio:has_qual [ a pheno:karyotypic_sex ; 
+                   sio:has_meas [ a "UNKNOWN_KARYOTYPE" ]] .
+
+:pheno_sio_patient_11
+    sio:has_qual :q1 .
+:q1 a pheno:karyotypic_sex ; 
+    sio:has_meas :qv1 .
+:qv1 a pheno:UNKNOWN_KARYOTYPE  .
