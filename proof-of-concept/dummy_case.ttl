@@ -72,9 +72,8 @@ umls:Gender
 
 
 #################################################################
-#    Synthetic data
+#     SKOS Relations between values
 #################################################################
-
 # UMLS
 umls:male
     skos:narrowMatch <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>,
@@ -83,13 +82,20 @@ umls:male
     ncit:C20197,
     pheno:XY  .
 
-umls:male
+umls:female
     skos:narrowMatch <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F>,
     <https://athena.ohdsi.org/search-terms/terms/8532>  ,
     loinc:LA22879-3,
     ncit:C16576,
-    pheno:XX  .
+    pheno:XX  ,
+    pheno:XXX  ,
+    pheno:XXXX  ,
+    pheno:XO  .
 
+
+#################################################################
+#    Synthetic data
+#################################################################
 
 # FHIR
 :fhir_patient_01
@@ -143,6 +149,15 @@ umls:male
 
 :pheno_patient_09
     pheno:karyotypic_sex  pheno:XYY  .
+
+:pheno_patient_10
+    pheno:karyotypic_sex  pheno:XXX  .
+
+:pheno_patient_11
+    pheno:karyotypic_sex  pheno:XXXX  .
+
+:pheno_patient_12
+    pheno:karyotypic_sex  pheno:XO  .
 
 
 # openEHR

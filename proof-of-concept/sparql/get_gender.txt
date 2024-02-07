@@ -1,0 +1,9 @@
+# Get all patients who has 'Gender' attribute  --> 6 results
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+SELECT ?s ?p ?o
+WHERE {
+       # Ensure it is 'gender'-related conept. 
+       umls:Gender skos:narrowMatch* ?p .
+       ?s ?p ?o
+       }

@@ -1,0 +1,11 @@
+# Get patients whose sex is female (not gender female) -->  results
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+prefix omop: <https://ohdsi.github.io/CommonDataModel/>
+SELECT ?s ?p ?o
+WHERE {
+       umls:female skos:narrowMatch*/rdf:type*  ?o .
+       umls:sex skos:narrowMatch* ?p .
+       ?s ?p ?o
+      }

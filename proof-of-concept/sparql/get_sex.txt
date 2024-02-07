@@ -1,0 +1,10 @@
+# Get all patients who has 'Sex' attribute
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+SELECT ?s ?p ?o
+WHERE {
+       # Ensure it is 'sex'-related concept. 
+       umls:sex skos:narrowMatch* ?p .
+       ?s ?p ?o
+       }

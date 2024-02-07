@@ -1,0 +1,13 @@
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+SELECT ?umls_o (COUNT(?umls_o) AS ?count)
+WHERE {
+       # Ensure it is 'sex'-related concept. 
+       ?s ?p ?o .
+  	   umls:sex skos:narrowMatch* ?p .
+       ?umls_o skos:narrowMatch* ?o .
+       FILTER (?umls_o in (umls:male, umls:female)) .
+       }
+
+  GROUP BY ?umls_o 

@@ -1,0 +1,13 @@
+# Get patients whose sex is male (not gender male) --> 4 results
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix umls: <http://www.nlm.nih.gov/research/umls/>
+prefix fhir: <http://hl7.org/fhir/>
+prefix omop: <https://ohdsi.github.io/CommonDataModel/>
+SELECT ?s ?p ?o
+WHERE {
+       # Refer to any data elements whose concepts are or narrower than 'sex'
+       umls:sex skos:narrowMatch* ?p .
+       # Refer to any data values whose concepts are or narrower than 'male'
+       umls:male skos:narrowMatch*/rdf:type*  ?o .
+       ?s ?p ?o
+      }
