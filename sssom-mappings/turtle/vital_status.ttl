@@ -21,8 +21,8 @@ pheno:vital_status
 
 cdisc:survstat 
     skos:narrowMatch omop:person_death_datetime ;
-    skos:exactMatch fhir:patient_deceased .
+    skos:narrowMatch fhir:patient_deceased .
 
-fhir:patient_deceased 
-    skos:narrowMatch cdisc:survstat .
+fhir:patient_deceased
+    skos:exactMatch omop:person_death_datetime .
 

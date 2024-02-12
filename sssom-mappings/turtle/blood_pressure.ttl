@@ -22,7 +22,7 @@ fhir:systolic
 
 omop:measurement_concept_systolic_blood_pressure 
     skos:narrowMatch cdisc:sdtm_vstestcd_sysbp ;
-    skos:exactMatch openehr:systolic ;
+    skos:narrowMatch openehr:systolic ;
     skos:narrowMatch pheno:typed_quantity_systolic_blood_pressure .
 
 cdisc:sdtm_vstestcd_sysbp
