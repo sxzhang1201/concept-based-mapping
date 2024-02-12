@@ -97,7 +97,7 @@ umls:female
 #    Synthetic data
 #################################################################
 
-# FHIR
+# 5 FHIR
 :fhir_patient_01
     fhir:birth_sex <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>  .
 
@@ -113,7 +113,7 @@ umls:female
 :fhir_patient_07
     fhir:administrative_gender <http://hl7.org/fhir/administrative-gender#female> .
 
-# OMOP
+# 4 OMOP
 :omop_patient_01
     omop:gender_concept_id <https://athena.ohdsi.org/search-terms/terms/8507>  .
 
@@ -126,7 +126,7 @@ umls:female
 :omop_patient_04
     omop:observation_concept_id_as_gender loinc:LA22879-3 .
 
-# CDISC
+# 3 CDISC
 :cdisc_patient_01
     # male
     cdisc:sdtm_sex ncit:C20197 .
@@ -140,7 +140,7 @@ umls:female
     cdisc:sdtm_sex  ncit:C17998  .
 
 
-# Phenopacket
+# 6 Phenopacket
 :pheno_patient_01
     pheno:karyotypic_sex  pheno:XX  .
 
@@ -160,11 +160,9 @@ umls:female
     pheno:karyotypic_sex  pheno:XO  .
 
 
-# openEHR
+# 2 openEHR
 :openehr_patient_04
     openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#male> .
 
 :openehr_patient_05
     openehr:administrative_gender <http://hl7.org/fhir/administrative-gender#female> .
-
-

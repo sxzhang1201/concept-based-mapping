@@ -17,27 +17,27 @@ def execute():
         'distribution': os.getcwd() + '/proof-of-concept/sparql/get_distribution.txt'
     }
 
-    use_cases = ['distribution']
+    use_cases = [
+        'sex', 'gender', 'male', 'sex_male', 'sex_female', 'biological_sex', 'distribution'
+    ]
 
-    # use_cases = [
-    #     'sex', 'gender', 'male', 'sex_male', 'sex_female', 'biological_sex'
-    # ]
+    with open('query_output.txt', 'a') as f:
 
-    for use_case in use_cases:
-        print("\nUse case: {}".format(use_case))
+        for use_case in use_cases:
+            print("Use case: {}\n".format(use_case), file=f)
 
-        with open(dict_sparql[use_case], 'r') as file:
-            use_case_query = file.read()
+            with open(dict_sparql[use_case], 'r') as file:
+                use_case_query = file.read()
 
-        q_res = g.query(use_case_query)
+            q_res = g.query(use_case_query)
 
-        print("Query results - {} rows: ".format(len(q_res)))
+            print("Query results - {} rows: ".format(len(q_res)), file=f)
 
-        for row in q_res:
-            
-            for element in row:
-                print(element, end=' ')
-            print('')
+            for row in q_res:
+
+                for element in row:
+                    print(element, end=' ', file=f)
+                print('', file=f)
 
 
 if __name__ == '__main__':
