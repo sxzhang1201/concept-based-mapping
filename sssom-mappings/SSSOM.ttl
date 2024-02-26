@@ -1,0 +1,2286 @@
+@prefix : <http://www.semanticweb.org/concept-based-mappings/sssom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix omop: <https://ohdsi.github.io/CommonDataModel/> .
+@prefix rdfs: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cdisc: <https://www.cdisc.org/> .
+@prefix pheno: <https://phenopacket-schema.readthedocs.io/> .
+@prefix sssom: <https://mapping-commons.github.io/sssom/> .
+@prefix openehr: <https://ckm.openehr.org/ckm/archetypes/> .
+@base <http://www.semanticweb.org/concept-based-mappings/sssom> .
+
+<http://www.semanticweb.org/concept-based-mappings/sssom> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#broadMatch
+skos:broadMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+skos:exactMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrowMatch
+skos:narrowMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#relatedMatch
+skos:relatedMatch rdf:type owl:AnnotationProperty .
+
+
+###  https://mapping-commons.github.io/sssom/creator_id
+sssom:creator_id rdf:type owl:AnnotationProperty .
+
+
+###  https://mapping-commons.github.io/sssom/mapping_date
+sssom:mapping_date rdf:type owl:AnnotationProperty .
+
+
+###  https://mapping-commons.github.io/sssom/mapping_justification
+sssom:mapping_justification rdf:type owl:AnnotationProperty .
+
+
+###  https://mapping-commons.github.io/sssom/object_label
+sssom:object_label rdf:type owl:AnnotationProperty .
+
+
+###  https://mapping-commons.github.io/sssom/subject_label
+sssom:subject_label rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://hl7.org/fhir/administrative_gender
+fhir:administrative_gender rdf:type owl:Class ;
+                           skos:broadMatch openehr:administrative_gender ,
+                                           omop:observation_concept_id_as_gender ;
+                           skos:relatedMatch openehr:legal_gender .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:administrative_gender ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget openehr:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual for administrative purposes.  "^^xsd:string ;
+   sssom:subject_label "The gender of a patient for administration and record keeping purposes.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:administrative_gender ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:observation_concept_id_as_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Gender (Observable entity) "^^xsd:string ;
+   sssom:subject_label "The gender of a patient for administration and record keeping purposes.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:administrative_gender ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget openehr:legal_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual used for official or legal purposes.  "^^xsd:string ;
+   sssom:subject_label "The gender of a patient for administration and record keeping purposes.  "^^xsd:string
+ ] .
+
+
+###  http://hl7.org/fhir/birth_date
+fhir:birth_date rdf:type owl:Class ;
+                skos:broadMatch openehr:birth_date ,
+                                pheno:individual_date_of_birth ,
+                                cdisc:cdash_brthdat ;
+                skos:relatedMatch omop:year_of_birth .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_date ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget openehr:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth a person. "^^xsd:string ;
+   sssom:subject_label "The date of birth for the patient. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_date ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:individual_date_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth. "^^xsd:string ;
+   sssom:subject_label "The date of birth for the patient. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_date ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:cdash_brthdat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth of the subject in an umambiguous date format. "^^xsd:string ;
+   sssom:subject_label "The date of birth for the patient. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_date ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget omop:year_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The year of birth of the person. "^^xsd:string ;
+   sssom:subject_label "The date of birth for the patient.  "^^xsd:string
+ ] .
+
+
+###  http://hl7.org/fhir/birth_sex
+fhir:birth_sex rdf:type owl:Class ;
+               skos:narrowMatch openehr:sex_assigned_at_birth ,
+                                omop:gender_concept_id ,
+                                pheno:karyotypic_sex ,
+                                pheno:sex ,
+                                cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician). "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
+ ] .
+
+
+###  http://hl7.org/fhir/condition_code
+fhir:condition_code rdf:type owl:Class ;
+                    skos:exactMatch omop:condition_concept_id ,
+                                    cdisc:mhterm_diagnosis ;
+                    skos:narrowMatch openehr:diagnosis_name ,
+                                     pheno:disease_term .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:condition_code ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget omop:condition_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "A condition. "^^xsd:string ;
+   sssom:subject_label "Identification of the condition, problem or diagnosis. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:condition_code ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:mhterm_diagnosis ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medical condition or event. "^^xsd:string ;
+   sssom:subject_label "Identification of the condition, problem or diagnosis. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:condition_code ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:diagnosis_name ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "Identification of the condition, problem or diagnosis. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:condition_code ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:disease_term ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "An ontology class that represents the disease. "^^xsd:string ;
+   sssom:subject_label "Identification of the condition, problem or diagnosis. "^^xsd:string
+ ] .
+
+
+###  http://hl7.org/fhir/medication
+fhir:medication rdf:type owl:Class ;
+                skos:broadMatch omop:drug_concept_id ,
+                                pheno:treatment_agent ;
+                skos:exactMatch openehr:medication_summary ,
+                                cdisc:cdash_cmtrt .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:medication ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:drug_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Drug dispensings or administrations for a person.  "^^xsd:string ;
+   sssom:subject_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:medication ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:treatment_agent ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The drug or therapeutic agent.  "^^xsd:string ;
+   sssom:subject_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:medication ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget openehr:medication_summary ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string ;
+   sssom:subject_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:medication ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:cdash_cmtrt ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medication name.  "^^xsd:string ;
+   sssom:subject_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string
+ ] .
+
+
+###  http://hl7.org/fhir/patient_deceased
+fhir:patient_deceased rdf:type owl:Class ;
+                      skos:broadMatch pheno:vital_status ,
+                                      cdisc:survstat ;
+                      skos:exactMatch omop:person_death_datetime .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:patient_deceased ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:vital_status ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "The status of being deceased or not.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:patient_deceased ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:survstat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "The status of being deceased or not.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:patient_deceased ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget omop:person_death_datetime ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date the person was deceased.  "^^xsd:string ;
+   sssom:subject_label "The status of being deceased or not.  "^^xsd:string
+ ] .
+
+
+###  http://hl7.org/fhir/systolic
+fhir:systolic rdf:type owl:Class ;
+              skos:exactMatch omop:measurement_concept_systolic_blood_pressure ;
+              skos:narrowMatch openehr:systolic ,
+                               pheno:typed_quantity_systolic_blood_pressure ,
+                               cdisc:sdtm_vstestcd_sysbp .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:systolic ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure (observable entity). "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:systolic ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:systolic ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:typed_quantity_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:systolic ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_vstestcd_sysbp ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.  "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure. "^^xsd:string
+ ] .
+
+
+###  http://www.semanticweb.org/concept-based-mappings/sssom#DateOfBirthDataElement
+:DateOfBirthDataElement rdf:type owl:Class ;
+                        skos:narrowMatch fhir:birth_date ,
+                                         openehr:birth_date ,
+                                         omop:year_of_birth ,
+                                         pheno:individual_date_of_birth ,
+                                         cdisc:cdash_brthdat .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DateOfBirthDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth for the patient. "^^xsd:string ;
+   sssom:subject_label "Date-of-birth data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DateOfBirthDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth a person. "^^xsd:string ;
+   sssom:subject_label "Date-of-birthd data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DateOfBirthDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:year_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The year of birth of the person. "^^xsd:string ;
+   sssom:subject_label "Date-of-birth data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DateOfBirthDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:individual_date_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth. "^^xsd:string ;
+   sssom:subject_label "Date-of-birth data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DateOfBirthDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:cdash_brthdat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth of the subject in an umambiguous date format.  "^^xsd:string ;
+   sssom:subject_label "Date-of-birth data elements."^^xsd:string
+ ] .
+
+
+###  http://www.semanticweb.org/concept-based-mappings/sssom#DiagnosisDataElement
+:DiagnosisDataElement rdf:type owl:Class ;
+                      skos:narrowMatch fhir:condition_code ,
+                                       openehr:diagnosis_name ,
+                                       omop:condition_concept_id ,
+                                       pheno:disease_term ,
+                                       cdisc:mhterm_diagnosis .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DiagnosisDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:condition_code ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the condition, problem or diagnosis   "^^xsd:string ;
+   sssom:subject_label "Diagnosis-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DiagnosisDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:diagnosis_name ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the problem or diagnosis.   "^^xsd:string ;
+   sssom:subject_label "Diagnosis-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DiagnosisDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:condition_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "A condition.   "^^xsd:string ;
+   sssom:subject_label "Diagnosis-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DiagnosisDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:disease_term ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "An ontology class that represents the disease.   "^^xsd:string ;
+   sssom:subject_label "Diagnosis-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :DiagnosisDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:mhterm_diagnosis ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medical condition or event.   "^^xsd:string ;
+   sssom:subject_label "Diagnosis-related data elements."^^xsd:string
+ ] .
+
+
+###  http://www.semanticweb.org/concept-based-mappings/sssom#MedicationDataElement
+:MedicationDataElement rdf:type owl:Class ;
+                       skos:narrowMatch fhir:medication ,
+                                        openehr:medication_summary ,
+                                        omop:drug_concept_id ,
+                                        pheno:treatment_agent ,
+                                        cdisc:cdash_cmtrt .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :MedicationDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:medication ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string ;
+   sssom:subject_label "Medication data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :MedicationDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:medication_summary ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string ;
+   sssom:subject_label "Medication data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :MedicationDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:drug_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Drug dispensings or administrations for a person.  "^^xsd:string ;
+   sssom:subject_label "Medication data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :MedicationDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:treatment_agent ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The drug or therapeutic agent.  "^^xsd:string ;
+   sssom:subject_label "Medication data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :MedicationDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:cdash_cmtrt ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medication name.  "^^xsd:string ;
+   sssom:subject_label "Medication data elements."^^xsd:string
+ ] .
+
+
+###  http://www.semanticweb.org/concept-based-mappings/sssom#SexOrGenderDataElement
+:SexOrGenderDataElement rdf:type owl:Class ;
+                        skos:narrowMatch fhir:administrative_gender ,
+                                         fhir:birth_sex ,
+                                         openehr:administrative_gender ,
+                                         openehr:legal_gender ,
+                                         openehr:sex_assigned_at_birth ,
+                                         omop:gender_concept_id ,
+                                         omop:observation_concept_id_as_gender ,
+                                         pheno:karyotypic_sex ,
+                                         pheno:sex ,
+                                         cdisc:cdash_sex ,
+                                         cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of a patient for administration and record keeping purposes. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual for administrative purposes. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:legal_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual used for official or legal purposes. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:observation_concept_id_as_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Gender (Observable entity). "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician).  "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:cdash_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SexOrGenderDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "Sex-related data elements."^^xsd:string
+ ] .
+
+
+###  http://www.semanticweb.org/concept-based-mappings/sssom#SystolicBloodPressureDataElement
+:SystolicBloodPressureDataElement rdf:type owl:Class ;
+                                  skos:narrowMatch fhir:systolic ,
+                                                   openehr:systolic ,
+                                                   omop:measurement_concept_systolic_blood_pressure ,
+                                                   pheno:typed_quantity_systolic_blood_pressure ,
+                                                   cdisc:sdtm_vstestcd_sysbp .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SystolicBloodPressureDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure. "^^xsd:string ;
+   sssom:subject_label "Systolic-blood-pressure data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SystolicBloodPressureDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.   "^^xsd:string ;
+   sssom:subject_label "Systolic-blood-pressure data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SystolicBloodPressureDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure (observable entity)   "^^xsd:string ;
+   sssom:subject_label "Systolic-blood-pressure data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SystolicBloodPressureDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:typed_quantity_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart   "^^xsd:string ;
+   sssom:subject_label "Systolic-blood-pressure data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :SystolicBloodPressureDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_vstestcd_sysbp ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.   "^^xsd:string ;
+   sssom:subject_label "Systolic-blood-pressure data elements. "^^xsd:string
+ ] .
+
+
+###  http://www.semanticweb.org/concept-based-mappings/sssom#VitalStatusDataElement
+:VitalStatusDataElement rdf:type owl:Class ;
+                        skos:narrowMatch fhir:patient_deceased ,
+                                         omop:person_death_datetime ,
+                                         pheno:vital_status ,
+                                         cdisc:survstat .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :VitalStatusDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:patient_deceased ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being deceased or not.  "^^xsd:string ;
+   sssom:subject_label "Vital-status data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :VitalStatusDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:person_death_datetime ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date the person was deceased.  "^^xsd:string ;
+   sssom:subject_label "Vital-status data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :VitalStatusDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:vital_status ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "Vital-status data elements. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource :VitalStatusDataElement ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:survstat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "Vital-status data elements. "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/administrative_gender
+openehr:administrative_gender rdf:type owl:Class ;
+                              skos:broadMatch omop:observation_concept_id_as_gender ;
+                              skos:narrowMatch fhir:administrative_gender ;
+                              skos:relatedMatch openehr:legal_gender .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:administrative_gender ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:observation_concept_id_as_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Gender (Observable entity) "^^xsd:string ;
+   sssom:subject_label "The gender of an individual for administrative purposes.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:administrative_gender ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of a patient for administration and record keeping purposes.  "^^xsd:string ;
+   sssom:subject_label "The gender of an individual for administrative purposes.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:administrative_gender ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget openehr:legal_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual used for official or legal purposes.  "^^xsd:string ;
+   sssom:subject_label "The gender of an individual for administrative purposes.  "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/birth_date
+openehr:birth_date rdf:type owl:Class ;
+                   skos:broadMatch pheno:individual_date_of_birth ,
+                                   cdisc:cdash_brthdat ;
+                   skos:narrowMatch fhir:birth_date ,
+                                    omop:year_of_birth .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:birth_date ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:individual_date_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth. "^^xsd:string ;
+   sssom:subject_label "The date of birth a person. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:birth_date ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:cdash_brthdat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth of the subject in an umambiguous date format. "^^xsd:string ;
+   sssom:subject_label "The date of birth a person. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:birth_date ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth for the patient.  "^^xsd:string ;
+   sssom:subject_label "The date of birth a person.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:birth_date ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:year_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The year of birth of the person. "^^xsd:string ;
+   sssom:subject_label "The date of birth a person.  "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/diagnosis_name
+openehr:diagnosis_name rdf:type owl:Class ;
+                       skos:broadMatch fhir:condition_code ,
+                                       omop:condition_concept_id ,
+                                       cdisc:mhterm_diagnosis ;
+                       skos:narrowMatch pheno:disease_term .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:diagnosis_name ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:condition_code ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the condition, problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "Identification of the problem or diagnosis. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:diagnosis_name ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:condition_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "A condition.  "^^xsd:string ;
+   sssom:subject_label "Identification of the problem or diagnosis. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:diagnosis_name ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:mhterm_diagnosis ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medical condition or event.  "^^xsd:string ;
+   sssom:subject_label "Identification of the problem or diagnosis. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:diagnosis_name ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:disease_term ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "An ontology class that represents the disease. "^^xsd:string ;
+   sssom:subject_label "Identification of the problem or diagnosis. "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/legal_gender
+openehr:legal_gender rdf:type owl:Class ;
+                     skos:broadMatch omop:observation_concept_id_as_gender ;
+                     skos:relatedMatch fhir:administrative_gender ,
+                                       openehr:administrative_gender .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:legal_gender ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:observation_concept_id_as_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Gender (Observable entity) "^^xsd:string ;
+   sssom:subject_label "The gender of an individual used for official or legal purposes.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:legal_gender ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget fhir:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of a patient for administration and record keeping purposes.  "^^xsd:string ;
+   sssom:subject_label "The gender of an individual used for official or legal purposes.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:legal_gender ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget openehr:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual for administrative purposes.  "^^xsd:string ;
+   sssom:subject_label "The gender of an individual used for official or legal purposes.  "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/medication_summary
+openehr:medication_summary rdf:type owl:Class ;
+                           skos:broadMatch omop:drug_concept_id ,
+                                           pheno:treatment_agent ;
+                           skos:exactMatch fhir:medication ,
+                                           cdisc:cdash_cmtrt .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:medication_summary ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:drug_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Drug dispensings or administrations for a person.  "^^xsd:string ;
+   sssom:subject_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:medication_summary ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:treatment_agent ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The drug or therapeutic agent.  "^^xsd:string ;
+   sssom:subject_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:medication_summary ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget fhir:medication ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string ;
+   sssom:subject_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:medication_summary ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:cdash_cmtrt ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medication name.  "^^xsd:string ;
+   sssom:subject_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/sex_assigned_at_birth
+openehr:sex_assigned_at_birth rdf:type owl:Class ;
+                              skos:broadMatch fhir:birth_sex ,
+                                              omop:gender_concept_id ,
+                                              cdisc:sdtm_sex ;
+                              skos:relatedMatch pheno:karyotypic_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:sex_assigned_at_birth ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string ;
+   sssom:subject_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:sex_assigned_at_birth ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:sex_assigned_at_birth ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.   "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:sex_assigned_at_birth ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/systolic
+openehr:systolic rdf:type owl:Class ;
+                 skos:broadMatch fhir:systolic ,
+                                 omop:measurement_concept_systolic_blood_pressure ;
+                 skos:exactMatch pheno:typed_quantity_systolic_blood_pressure ,
+                                 cdisc:sdtm_vstestcd_sysbp .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:systolic ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:systolic ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure (observable entity). "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:systolic ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget pheno:typed_quantity_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:systolic ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:sdtm_vstestcd_sysbp ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/condition_concept_id
+omop:condition_concept_id rdf:type owl:Class ;
+                          skos:exactMatch fhir:condition_code ,
+                                          cdisc:mhterm_diagnosis ;
+                          skos:narrowMatch openehr:diagnosis_name ,
+                                           pheno:disease_term .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:condition_concept_id ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget fhir:condition_code ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the condition, problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "A condition. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:condition_concept_id ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:mhterm_diagnosis ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medical condition or event. "^^xsd:string ;
+   sssom:subject_label "A condition.   "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:condition_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:diagnosis_name ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "A condition.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:condition_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:disease_term ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "An ontology class that represents the disease. "^^xsd:string ;
+   sssom:subject_label "A condition.  "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/drug_concept_id
+omop:drug_concept_id rdf:type owl:Class ;
+                     skos:exactMatch pheno:treatment_agent ;
+                     skos:narrowMatch fhir:medication ,
+                                      openehr:medication_summary ,
+                                      cdisc:cdash_cmtrt .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:drug_concept_id ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget pheno:treatment_agent ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The drug or therapeutic agent.  "^^xsd:string ;
+   sssom:subject_label "Drug dispensings or administrations for a person.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:drug_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:medication ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string ;
+   sssom:subject_label "Drug dispensings or administrations for a person.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:drug_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:medication_summary ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string ;
+   sssom:subject_label "Drug dispensings or administrations for a person.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:drug_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:cdash_cmtrt ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medication name.  "^^xsd:string ;
+   sssom:subject_label "Drug dispensings or administrations for a person.  "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/gender_concept_id
+omop:gender_concept_id rdf:type owl:Class ;
+                       skos:broadMatch fhir:birth_sex ;
+                       skos:narrowMatch openehr:sex_assigned_at_birth ,
+                                        pheno:karyotypic_sex ,
+                                        pheno:sex ,
+                                        cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician).  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject.  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/measurement_concept_systolic_blood_pressure
+omop:measurement_concept_systolic_blood_pressure rdf:type owl:Class ;
+                                                 skos:exactMatch fhir:systolic ;
+                                                 skos:narrowMatch openehr:systolic ,
+                                                                  pheno:typed_quantity_systolic_blood_pressure ,
+                                                                  cdisc:sdtm_vstestcd_sysbp .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:measurement_concept_systolic_blood_pressure ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget fhir:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure.  "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure (observable entity). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:measurement_concept_systolic_blood_pressure ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure (observable entity). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:measurement_concept_systolic_blood_pressure ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:typed_quantity_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure (observable entity). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:measurement_concept_systolic_blood_pressure ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_vstestcd_sysbp ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string ;
+   sssom:subject_label "Systolic blood pressure (observable entity). "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/observation_concept_id_as_gender
+omop:observation_concept_id_as_gender rdf:type owl:Class ;
+                                      skos:narrowMatch fhir:administrative_gender ,
+                                                       openehr:administrative_gender ,
+                                                       openehr:legal_gender .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:observation_concept_id_as_gender ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of a patient for administration and record keeping purposes.  "^^xsd:string ;
+   sssom:subject_label "Gender (Observable entity) "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:observation_concept_id_as_gender ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:administrative_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual for administrative purposes.  "^^xsd:string ;
+   sssom:subject_label "Gender (Observable entity) "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:observation_concept_id_as_gender ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:legal_gender ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The gender of an individual used for official or legal purposes.  "^^xsd:string ;
+   sssom:subject_label "Gender (Observable entity) "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/person_death_datetime
+omop:person_death_datetime rdf:type owl:Class ;
+                           skos:broadMatch pheno:vital_status ,
+                                           cdisc:survstat ;
+                           skos:exactMatch fhir:patient_deceased .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:person_death_datetime ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:vital_status ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "The date the person was deceased.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:person_death_datetime ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:survstat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "The date the person was deceased.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:person_death_datetime ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget fhir:patient_deceased ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being deceased or not.  "^^xsd:string ;
+   sssom:subject_label "The date the person was deceased.  "^^xsd:string
+ ] .
+
+
+###  https://ohdsi.github.io/CommonDataModel/year_of_birth
+omop:year_of_birth rdf:type owl:Class ;
+                   skos:broadMatch openehr:birth_date ,
+                                   pheno:individual_date_of_birth ,
+                                   cdisc:cdash_brthdat ;
+                   skos:relatedMatch fhir:birth_date .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:year_of_birth ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget openehr:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth a person. "^^xsd:string ;
+   sssom:subject_label "The year of birth of the person. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:year_of_birth ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:individual_date_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth. "^^xsd:string ;
+   sssom:subject_label "The year of birth of the person. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:year_of_birth ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:cdash_brthdat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth of the subject in an umambiguous date format. "^^xsd:string ;
+   sssom:subject_label "The year of birth of the person. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:year_of_birth ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget fhir:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth for the patient. "^^xsd:string ;
+   sssom:subject_label "The year of birth of the person. "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/disease_term
+pheno:disease_term rdf:type owl:Class ;
+                   skos:broadMatch fhir:condition_code ,
+                                   openehr:diagnosis_name ,
+                                   omop:condition_concept_id ,
+                                   cdisc:mhterm_diagnosis .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:disease_term ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:condition_code ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the condition, problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "An ontology class that represents the disease. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:disease_term ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget openehr:diagnosis_name ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "An ontology class that represents the disease. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:disease_term ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:condition_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "A condition.  "^^xsd:string ;
+   sssom:subject_label "An ontology class that represents the disease. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:disease_term ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget cdisc:mhterm_diagnosis ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medical condition or event.  "^^xsd:string ;
+   sssom:subject_label "An ontology class that represents the disease. "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/individual_date_of_birth
+pheno:individual_date_of_birth rdf:type owl:Class ;
+                               skos:exactMatch cdisc:cdash_brthdat ;
+                               skos:narrowMatch fhir:birth_date ,
+                                                openehr:birth_date ,
+                                                omop:year_of_birth .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:individual_date_of_birth ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:cdash_brthdat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth of the subject in an umambiguous date format. "^^xsd:string ;
+   sssom:subject_label "The date of birth. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:individual_date_of_birth ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth for the patient.  "^^xsd:string ;
+   sssom:subject_label "The date of birth  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:individual_date_of_birth ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth a person.  "^^xsd:string ;
+   sssom:subject_label "The date of birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:individual_date_of_birth ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:year_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The year of birth of the person. "^^xsd:string ;
+   sssom:subject_label "The date of birth.  "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/karyotypic_sex
+pheno:karyotypic_sex rdf:type owl:Class ;
+                     skos:broadMatch fhir:birth_sex ,
+                                     omop:gender_concept_id ;
+                     skos:relatedMatch openehr:sex ,
+                                       openehr:sex_assigned_at_birth ,
+                                       cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:karyotypic_sex ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string ;
+   sssom:subject_label "The chromosomal sex of an individual.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:karyotypic_sex ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The chromosomal sex of an individual.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:karyotypic_sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget openehr:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:karyotypic_sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:karyotypic_sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The chromosomal sex of an individual.  "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/sex
+pheno:sex rdf:type owl:Class ;
+          skos:broadMatch fhir:birth_sex ,
+                          omop:gender_concept_id ;
+          skos:relatedMatch openehr:sex_assigned_at_birth_sex ,
+                            cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:sex ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string ;
+   sssom:subject_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:sex ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician).  "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/treatment_agent
+pheno:treatment_agent rdf:type owl:Class ;
+                      skos:exactMatch omop:drug_concept_id ;
+                      skos:narrowMatch fhir:medication ,
+                                       openehr:medication_summary ,
+                                       cdisc:cdash_cmtrt .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:treatment_agent ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget omop:drug_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Drug dispensings or administrations for a person.  "^^xsd:string ;
+   sssom:subject_label "The drug or therapeutic agent.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:treatment_agent ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:medication ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string ;
+   sssom:subject_label "The drug or therapeutic agent.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:treatment_agent ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:medication_summary ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string ;
+   sssom:subject_label "The drug or therapeutic agent.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:treatment_agent ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:cdash_cmtrt ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Medication name.  "^^xsd:string ;
+   sssom:subject_label "The drug or therapeutic agent.  "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/typed_quantity_systolic_blood_pressure
+pheno:typed_quantity_systolic_blood_pressure rdf:type owl:Class ;
+                                             skos:broadMatch fhir:systolic ,
+                                                             omop:measurement_concept_systolic_blood_pressure ;
+                                             skos:exactMatch openehr:systolic ,
+                                                             cdisc:sdtm_vstestcd_sysbp .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:typed_quantity_systolic_blood_pressure ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure. "^^xsd:string ;
+   sssom:subject_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:typed_quantity_systolic_blood_pressure ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure (observable entity). "^^xsd:string ;
+   sssom:subject_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:typed_quantity_systolic_blood_pressure ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget openehr:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.  "^^xsd:string ;
+   sssom:subject_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:typed_quantity_systolic_blood_pressure ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:sdtm_vstestcd_sysbp ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.   "^^xsd:string ;
+   sssom:subject_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string
+ ] .
+
+
+###  https://phenopacket-schema.readthedocs.io/vital_status
+pheno:vital_status rdf:type owl:Class ;
+                   skos:exactMatch cdisc:survstat ;
+                   skos:narrowMatch fhir:patient_deceased ,
+                                    omop:person_death_datetime .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:vital_status ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:survstat ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "The status of being living, deceased, or unknown.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:vital_status ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:patient_deceased ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being deceased or not.  "^^xsd:string ;
+   sssom:subject_label "The status of being living, deceased, or unknown.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:vital_status ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:person_death_datetime ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date the person was deceased.  "^^xsd:string ;
+   sssom:subject_label "The status of being living, deceased, or unknown.  "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/cdash_brthdat
+cdisc:cdash_brthdat rdf:type owl:Class ;
+                    skos:exactMatch pheno:individual_date_of_birth ;
+                    skos:narrowMatch fhir:birth_date ,
+                                     openehr:birth_date ,
+                                     omop:year_of_birth .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_brthdat ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget pheno:individual_date_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth.  "^^xsd:string ;
+   sssom:subject_label "The date of birth of the subject in an umambiguous date format.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_brthdat ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth for the patient.  "^^xsd:string ;
+   sssom:subject_label "The date of birth of the subject in an umambiguous date format.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_brthdat ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:birth_date ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date of birth a person.  "^^xsd:string ;
+   sssom:subject_label "The date of birth of the subject in an umambiguous date format.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_brthdat ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:year_of_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The year of birth of the person. "^^xsd:string ;
+   sssom:subject_label "The date of birth of the subject in an umambiguous date format.  "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/cdash_cmtrt
+cdisc:cdash_cmtrt rdf:type owl:Class ;
+                  skos:broadMatch omop:drug_concept_id ,
+                                  pheno:treatment_agent ;
+                  skos:exactMatch fhir:medication ,
+                                  openehr:medication_summary .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_cmtrt ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:drug_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Drug dispensings or administrations for a person.  "^^xsd:string ;
+   sssom:subject_label "Medication name.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_cmtrt ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget pheno:treatment_agent ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The drug or therapeutic agent.  "^^xsd:string ;
+   sssom:subject_label "Medication name.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_cmtrt ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget fhir:medication ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.  "^^xsd:string ;
+   sssom:subject_label "Medication name.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_cmtrt ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget openehr:medication_summary ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Summary or persistent information about the use of a single medication or group of medications.  "^^xsd:string ;
+   sssom:subject_label "Medication name.  "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/cdash_sex
+cdisc:cdash_sex rdf:type owl:Class ;
+                skos:exactMatch cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:cdash_sex ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/mhterm_diagnosis
+cdisc:mhterm_diagnosis rdf:type owl:Class ;
+                       skos:exactMatch fhir:condition_code ,
+                                       omop:condition_concept_id ;
+                       skos:narrowMatch openehr:diagnosis_name ,
+                                        pheno:disease_term .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:mhterm_diagnosis ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget fhir:condition_code ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the condition, problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "Medical condition or event. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:mhterm_diagnosis ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget omop:condition_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "A condition.   "^^xsd:string ;
+   sssom:subject_label "Medical condition or event. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:mhterm_diagnosis ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:diagnosis_name ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Identification of the problem or diagnosis. "^^xsd:string ;
+   sssom:subject_label "Medical condition or event.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:mhterm_diagnosis ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:disease_term ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "An ontology class that represents the disease. "^^xsd:string ;
+   sssom:subject_label "Medical condition or event.  "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/sdtm_sex
+cdisc:sdtm_sex rdf:type owl:Class ;
+               skos:broadMatch fhir:birth_sex ,
+                               omop:gender_concept_id ;
+               skos:exactMatch cdisc:cdash_sex ;
+               skos:narrowMatch openehr:sex_assigned_at_birth ;
+               skos:relatedMatch pheno:karyotypic_sex ,
+                                 pheno:sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_sex ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_sex ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_sex ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget cdisc:cdash_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.   "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician).  "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/sdtm_vstestcd_sysbp
+cdisc:sdtm_vstestcd_sysbp rdf:type owl:Class ;
+                          skos:broadMatch fhir:systolic ,
+                                          omop:measurement_concept_systolic_blood_pressure ;
+                          skos:exactMatch openehr:systolic ,
+                                          pheno:typed_quantity_systolic_blood_pressure .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_vstestcd_sysbp ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_vstestcd_sysbp ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure (observable entity). "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_vstestcd_sysbp ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget openehr:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:sdtm_vstestcd_sysbp ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget pheno:typed_quantity_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The maximum pressure exerted into the systemic arterial circulation during the contraction of the left ventricle of the heart. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.   "^^xsd:string
+ ] .
+
+
+###  https://www.cdisc.org/survstat
+cdisc:survstat rdf:type owl:Class ;
+               skos:exactMatch pheno:vital_status ;
+               skos:narrowMatch fhir:patient_deceased ,
+                                omop:person_death_datetime .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:survstat ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget pheno:vital_status ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being living, deceased, or unknown.  "^^xsd:string ;
+   sssom:subject_label "The status of being living, deceased, or unknown.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:survstat ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget fhir:patient_deceased ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The status of being deceased or not.  "^^xsd:string ;
+   sssom:subject_label "The status of being living, deceased, or unknown.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource cdisc:survstat ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:person_death_datetime ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The date the person was deceased.  "^^xsd:string ;
+   sssom:subject_label "The status of being living, deceased, or unknown.  "^^xsd:string
+ ] .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+openehr:sex skos:relatedMatch pheno:karyotypic_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+
+openehr:sex_assigned_at_birth_sex skos:relatedMatch pheno:sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:sex_assigned_at_birth_sex ;
+   owl:annotatedProperty skos:relatedMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The physical difference between male and female of a subject. "^^xsd:string
+ ] .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

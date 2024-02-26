@@ -19,7 +19,6 @@ omop:observation_concept_id_as_gender
     skos:narrowMatch openehr:administrative_gender ;
     skos:narrowMatch openehr:legal_gender .
 
-
 openehr:administrative_gender
     skos:narrowMatch fhir:administrative_gender ;
     skos:relatedMatch openehr:legal_gender .
