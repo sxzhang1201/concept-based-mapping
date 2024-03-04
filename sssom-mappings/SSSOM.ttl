@@ -205,7 +205,68 @@ fhir:birth_sex rdf:type owl:Class ;
                                    [ rdf:type owl:Restriction ;
                                      owl:onProperty sio:SIO_000217 ;
                                      owl:someValuesFrom <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK>
-                                   ] .
+                                   ] ;
+               skos:broadMatch :SexOrGenderDataElement ;
+               skos:narrowMatch openehr:sex_assigned_at_birth ,
+                                omop:gender_concept_id ,
+                                pheno:karyotypic_sex ,
+                                pheno:sex ,
+                                cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician). "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
 
 
 ###  http://hl7.org/fhir/condition_code
@@ -417,7 +478,19 @@ fhir:systolic rdf:type owl:Class ;
 
 
 ###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197
-<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197> rdf:type owl:Class .
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197> rdf:type owl:Class ;
+                                                            skos:broadMatch <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197> ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Male "^^xsd:string ;
+   sssom:subject_label "A person who belongs to the sex that normally produces sperm.  "^^xsd:string
+ ] .
 
 
 ###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45908
@@ -429,7 +502,43 @@ fhir:systolic rdf:type owl:Class ;
 
 
 ###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M
-<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> rdf:type owl:Class .
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> rdf:type owl:Class ;
+                                                                  skos:exactMatch <https://athena.ohdsi.org/search-terms/terms/8507> ,
+                                                                                  pheno:MALE ;
+                                                                  skos:narrowMatch <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget <https://athena.ohdsi.org/search-terms/terms/8507> ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Male  "^^xsd:string ;
+   sssom:subject_label "Male "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget pheno:MALE ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Male  "^^xsd:string ;
+   sssom:subject_label "Male "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197> ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "A person who belongs to the sex that normally produces sperm.  "^^xsd:string ;
+   sssom:subject_label "Male "^^xsd:string
+ ] .
 
 
 ###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU
@@ -898,7 +1007,19 @@ fhir:systolic rdf:type owl:Class ;
 
 
 ###  https://athena.ohdsi.org/search-terms/terms/8507
-<https://athena.ohdsi.org/search-terms/terms/8507> rdf:type owl:Class .
+<https://athena.ohdsi.org/search-terms/terms/8507> rdf:type owl:Class ;
+                                                   skos:exactMatch <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://athena.ohdsi.org/search-terms/terms/8507> ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Male  "^^xsd:string ;
+   sssom:subject_label "Male "^^xsd:string
+ ] .
 
 
 ###  https://athena.ohdsi.org/search-terms/terms/8532
@@ -1053,13 +1174,11 @@ openehr:diagnosis_name rdf:type owl:Class ;
 
 
 ###  https://ckm.openehr.org/ckm/archetypes/female
-openehr:female rdf:type owl:Class ;
-               owl:equivalentClass openehr:sex_assigned_at_birth .
+openehr:female rdf:type owl:Class .
 
 
 ###  https://ckm.openehr.org/ckm/archetypes/intersex
-openehr:intersex rdf:type owl:Class ;
-                 owl:equivalentClass openehr:sex_assigned_at_birth .
+openehr:intersex rdf:type owl:Class .
 
 
 ###  https://ckm.openehr.org/ckm/archetypes/legal_gender
@@ -1104,8 +1223,7 @@ openehr:legal_gender rdf:type owl:Class ;
 
 
 ###  https://ckm.openehr.org/ckm/archetypes/male
-openehr:male rdf:type owl:Class ;
-             owl:equivalentClass openehr:sex_assigned_at_birth .
+openehr:male rdf:type owl:Class .
 
 
 ###  https://ckm.openehr.org/ckm/archetypes/medication_summary
@@ -1163,6 +1281,18 @@ openehr:medication_summary rdf:type owl:Class ;
 
 ###  https://ckm.openehr.org/ckm/archetypes/sex_assigned_at_birth
 openehr:sex_assigned_at_birth rdf:type owl:Class ;
+                              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                    owl:onProperty sio:SIO_000217 ;
+                                                    owl:someValuesFrom openehr:female
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty sio:SIO_000217 ;
+                                                    owl:someValuesFrom openehr:intersex
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty sio:SIO_000217 ;
+                                                    owl:someValuesFrom openehr:male
+                                                  ] ;
                               skos:broadMatch fhir:birth_sex ,
                                               :SexOrGenderDataElement ,
                                               omop:gender_concept_id ,
@@ -1224,28 +1354,6 @@ openehr:systolic rdf:type owl:Class ;
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource openehr:systolic ;
-   owl:annotatedProperty skos:broadMatch ;
-   owl:annotatedTarget fhir:systolic ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "Systolic blood pressure. "^^xsd:string ;
-   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource openehr:systolic ;
-   owl:annotatedProperty skos:broadMatch ;
-   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "Systolic blood pressure (observable entity). "^^xsd:string ;
-   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource openehr:systolic ;
    owl:annotatedProperty skos:exactMatch ;
    owl:annotatedTarget pheno:typed_quantity_systolic_blood_pressure ;
    sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
@@ -1263,6 +1371,28 @@ openehr:systolic rdf:type owl:Class ;
    sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
    sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
    sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:systolic ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:systolic ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure. "^^xsd:string ;
+   sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource openehr:systolic ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget omop:measurement_concept_systolic_blood_pressure ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Systolic blood pressure (observable entity). "^^xsd:string ;
    sssom:subject_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle. "^^xsd:string
  ] .
 
@@ -1392,6 +1522,17 @@ omop:gender_concept_id rdf:type owl:Class ;
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:broadMatch ;
+   owl:annotatedTarget fhir:birth_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
    owl:annotatedProperty skos:narrowMatch ;
    owl:annotatedTarget openehr:sex_assigned_at_birth ;
    sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
@@ -1431,17 +1572,6 @@ omop:gender_concept_id rdf:type owl:Class ;
    sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
    sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
    sssom:object_label "The physical difference between male and female of a subject.  "^^xsd:string ;
-   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource omop:gender_concept_id ;
-   owl:annotatedProperty skos:broadMatch ;
-   owl:annotatedTarget fhir:birth_sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string ;
    sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
  ] .
 
@@ -1635,78 +1765,75 @@ omop:year_of_birth rdf:type owl:Class ;
 
 
 ###  https://phenopacket-schema.readthedocs.io/FEMALE
-pheno:FEMALE rdf:type owl:Class ;
-             owl:equivalentClass pheno:sex .
+pheno:FEMALE rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/MALE
 pheno:MALE rdf:type owl:Class ;
-           owl:equivalentClass pheno:sex .
+           skos:exactMatch <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource pheno:MALE ;
+   owl:annotatedProperty skos:exactMatch ;
+   owl:annotatedTarget <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "Male "^^xsd:string ;
+   sssom:subject_label "Male  "^^xsd:string
+ ] .
 
 
 ###  https://phenopacket-schema.readthedocs.io/OTHER_KARYOTYPE
-pheno:OTHER_KARYOTYPE rdf:type owl:Class ;
-                      owl:equivalentClass pheno:karyotypic_sex .
+pheno:OTHER_KARYOTYPE rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/OTHER_SEX
-pheno:OTHER_SEX rdf:type owl:Class ;
-                owl:equivalentClass pheno:sex .
+pheno:OTHER_SEX rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/UNKNOWN_KARYOTYPE
-pheno:UNKNOWN_KARYOTYPE rdf:type owl:Class ;
-                        owl:equivalentClass pheno:karyotypic_sex .
+pheno:UNKNOWN_KARYOTYPE rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/UNKNOWN_SEX
-pheno:UNKNOWN_SEX rdf:type owl:Class ;
-                  owl:equivalentClass pheno:sex .
+pheno:UNKNOWN_SEX rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XO
-pheno:XO rdf:type owl:Class ;
-         owl:equivalentClass pheno:karyotypic_sex .
+pheno:XO rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XX
-pheno:XX rdf:type owl:Class ;
-         owl:equivalentClass pheno:karyotypic_sex .
+pheno:XX rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XXX
-pheno:XXX rdf:type owl:Class ;
-          owl:equivalentClass pheno:karyotypic_sex .
+pheno:XXX rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XXXX
-pheno:XXXX rdf:type owl:Class ;
-           owl:equivalentClass pheno:karyotypic_sex .
+pheno:XXXX rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XXXY
-pheno:XXXY rdf:type owl:Class ;
-           owl:equivalentClass pheno:karyotypic_sex .
+pheno:XXXY rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XXY
-pheno:XXY rdf:type owl:Class ;
-          owl:equivalentClass pheno:karyotypic_sex .
+pheno:XXY rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XXYY
-pheno:XXYY rdf:type owl:Class ;
-           owl:equivalentClass pheno:karyotypic_sex .
+pheno:XXYY rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XY
-pheno:XY rdf:type owl:Class ;
-         owl:equivalentClass pheno:karyotypic_sex .
+pheno:XY rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/XYY
-pheno:XYY rdf:type owl:Class ;
-          owl:equivalentClass pheno:karyotypic_sex .
+pheno:XYY rdf:type owl:Class .
 
 
 ###  https://phenopacket-schema.readthedocs.io/disease_term
@@ -1817,6 +1944,50 @@ pheno:individual_date_of_birth rdf:type owl:Class ;
 
 ###  https://phenopacket-schema.readthedocs.io/karyotypic_sex
 pheno:karyotypic_sex rdf:type owl:Class ;
+                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:OTHER_KARYOTYPE
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:UNKNOWN_KARYOTYPE
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XO
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XX
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XXX
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XXXX
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XXXY
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XXY
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XXYY
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XY
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty sio:SIO_000217 ;
+                                           owl:someValuesFrom pheno:XYY
+                                         ] ;
                      skos:broadMatch fhir:birth_sex ,
                                      :SexOrGenderDataElement ,
                                      omop:gender_concept_id ;
@@ -1882,6 +2053,22 @@ pheno:karyotypic_sex rdf:type owl:Class ;
 
 ###  https://phenopacket-schema.readthedocs.io/sex
 pheno:sex rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty sio:SIO_000217 ;
+                                owl:someValuesFrom pheno:FEMALE
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty sio:SIO_000217 ;
+                                owl:someValuesFrom pheno:MALE
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty sio:SIO_000217 ;
+                                owl:someValuesFrom pheno:OTHER_SEX
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty sio:SIO_000217 ;
+                                owl:someValuesFrom pheno:UNKNOWN_SEX
+                              ] ;
           skos:broadMatch fhir:birth_sex ,
                           :SexOrGenderDataElement ,
                           omop:gender_concept_id ;
@@ -2445,104 +2632,8 @@ cdisc:survstat rdf:type owl:Class ;
 
 
 #################################################################
-#    Individuals
-#################################################################
-
-###  http://hl7.org/fhir/birth_sex
-fhir:birth_sex rdf:type owl:NamedIndividual ;
-               sio:SIO_000217 <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F> ,
-                              <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ,
-                              <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU> ,
-                              <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH> ,
-                              <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK> .
-
-
-###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F
-<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F> rdf:type owl:NamedIndividual .
-
-
-###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M
-<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> rdf:type owl:NamedIndividual .
-
-
-###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU
-<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU> rdf:type owl:NamedIndividual .
-
-
-###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH
-<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH> rdf:type owl:NamedIndividual .
-
-
-###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK
-<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK> rdf:type owl:NamedIndividual .
-
-
-#################################################################
 #    Annotations
 #################################################################
-
-fhir:birth_sex skos:narrowMatch openehr:sex_assigned_at_birth ;
-               skos:broadMatch :SexOrGenderDataElement ;
-               skos:narrowMatch cdisc:sdtm_sex ,
-                                omop:gender_concept_id ,
-                                pheno:karyotypic_sex ,
-                                pheno:sex .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget openehr:sex_assigned_at_birth ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget cdisc:sdtm_sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget omop:gender_concept_id ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget pheno:karyotypic_sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget pheno:sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician). "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
- ] .
-
 
 openehr:sex skos:relatedMatch pheno:karyotypic_sex .
 
