@@ -1,6 +1,9 @@
 @prefix : <http://www.semanticweb.org/concept-based-mappings/sssom#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sio: <http://semanticscience.org/resource/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix fhir: <http://hl7.org/fhir/> .
@@ -19,12 +22,28 @@
 #    Annotation properties
 #################################################################
 
+###  http://purl.org/dc/elements/1.1/identifier
+dc:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#broadMatch
 skos:broadMatch rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#exactMatch
 skos:exactMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#isDefinedBy
+skos:isDefinedBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#label
+skos:label rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#narrowMatch
@@ -56,12 +75,25 @@ sssom:subject_label rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://semanticscience.org/resource/SIO_000217
+sio:SIO_000217 rdf:type owl:ObjectProperty ;
+               dc:identifier "SIO_000217" ;
+               dct:description "has quality is a relation between an entity and the quality that it bears."@en ;
+               skos:isDefinedBy <http://semanticscience.org/ontology/sio.owl> ;
+               skos:label "has quality"@en .
+
+
+#################################################################
 #    Classes
 #################################################################
 
 ###  http://hl7.org/fhir/administrative_gender
 fhir:administrative_gender rdf:type owl:Class ;
-                           skos:broadMatch openehr:administrative_gender ,
+                           skos:broadMatch :SexOrGenderDataElement ,
+                                           openehr:administrative_gender ,
                                            omop:observation_concept_id_as_gender ;
                            skos:relatedMatch openehr:legal_gender .
 
@@ -101,7 +133,8 @@ fhir:administrative_gender rdf:type owl:Class ;
 
 ###  http://hl7.org/fhir/birth_date
 fhir:birth_date rdf:type owl:Class ;
-                skos:broadMatch openehr:birth_date ,
+                skos:broadMatch :DateOfBirthDataElement ,
+                                openehr:birth_date ,
                                 pheno:individual_date_of_birth ,
                                 cdisc:cdash_brthdat ;
                 skos:relatedMatch omop:year_of_birth .
@@ -153,70 +186,31 @@ fhir:birth_date rdf:type owl:Class ;
 
 ###  http://hl7.org/fhir/birth_sex
 fhir:birth_sex rdf:type owl:Class ;
-               skos:narrowMatch openehr:sex_assigned_at_birth ,
-                                omop:gender_concept_id ,
-                                pheno:karyotypic_sex ,
-                                pheno:sex ,
-                                cdisc:sdtm_sex .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget pheno:karyotypic_sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget pheno:sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician). "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget cdisc:sdtm_sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget openehr:sex_assigned_at_birth ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource fhir:birth_sex ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget omop:gender_concept_id ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
-   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
- ] .
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK>
+                                   ] .
 
 
 ###  http://hl7.org/fhir/condition_code
 fhir:condition_code rdf:type owl:Class ;
+                    skos:broadMatch :DiagnosisDataElement ;
                     skos:exactMatch omop:condition_concept_id ,
                                     cdisc:mhterm_diagnosis ;
                     skos:narrowMatch openehr:diagnosis_name ,
@@ -269,7 +263,8 @@ fhir:condition_code rdf:type owl:Class ;
 
 ###  http://hl7.org/fhir/medication
 fhir:medication rdf:type owl:Class ;
-                skos:broadMatch omop:drug_concept_id ,
+                skos:broadMatch :MedicationDataElement ,
+                                omop:drug_concept_id ,
                                 pheno:treatment_agent ;
                 skos:exactMatch openehr:medication_summary ,
                                 cdisc:cdash_cmtrt .
@@ -321,7 +316,8 @@ fhir:medication rdf:type owl:Class ;
 
 ###  http://hl7.org/fhir/patient_deceased
 fhir:patient_deceased rdf:type owl:Class ;
-                      skos:broadMatch pheno:vital_status ,
+                      skos:broadMatch :VitalStatusDataElement ,
+                                      pheno:vital_status ,
                                       cdisc:survstat ;
                       skos:exactMatch omop:person_death_datetime .
 
@@ -361,6 +357,7 @@ fhir:patient_deceased rdf:type owl:Class ;
 
 ###  http://hl7.org/fhir/systolic
 fhir:systolic rdf:type owl:Class ;
+              skos:broadMatch :SystolicBloodPressureDataElement ;
               skos:exactMatch omop:measurement_concept_systolic_blood_pressure ;
               skos:narrowMatch openehr:systolic ,
                                pheno:typed_quantity_systolic_blood_pressure ,
@@ -409,6 +406,42 @@ fhir:systolic rdf:type owl:Class ;
    sssom:object_label "The maximum systemic arterial blood pressure - measured in contraction phase of the heart cycle.  "^^xsd:string ;
    sssom:subject_label "Systolic blood pressure. "^^xsd:string
  ] .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16576
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16576> rdf:type owl:Class .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998> rdf:type owl:Class .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197> rdf:type owl:Class .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45908
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45908> rdf:type owl:Class .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F> rdf:type owl:Class .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> rdf:type owl:Class .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU> rdf:type owl:Class .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH> rdf:type owl:Class .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK> rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/concept-based-mappings/sssom#DateOfBirthDataElement
@@ -803,6 +836,15 @@ fhir:systolic rdf:type owl:Class ;
  ] .
 
 
+###  http://www.semanticweb.org/concept-based-mappings/sssom#ValueDomain
+:ValueDomain rdf:type owl:Class ;
+             skos:narrowMatch fhir:condition_code ,
+                              openehr:diagnosis_name ,
+                              omop:condition_concept_id ,
+                              pheno:disease_term ,
+                              cdisc:mhterm_diagnosis .
+
+
 ###  http://www.semanticweb.org/concept-based-mappings/sssom#VitalStatusDataElement
 :VitalStatusDataElement rdf:type owl:Class ;
                         skos:narrowMatch fhir:patient_deceased ,
@@ -855,9 +897,18 @@ fhir:systolic rdf:type owl:Class ;
  ] .
 
 
+###  https://athena.ohdsi.org/search-terms/terms/8507
+<https://athena.ohdsi.org/search-terms/terms/8507> rdf:type owl:Class .
+
+
+###  https://athena.ohdsi.org/search-terms/terms/8532
+<https://athena.ohdsi.org/search-terms/terms/8532> rdf:type owl:Class .
+
+
 ###  https://ckm.openehr.org/ckm/archetypes/administrative_gender
 openehr:administrative_gender rdf:type owl:Class ;
-                              skos:broadMatch omop:observation_concept_id_as_gender ;
+                              skos:broadMatch :SexOrGenderDataElement ,
+                                              omop:observation_concept_id_as_gender ;
                               skos:narrowMatch fhir:administrative_gender ;
                               skos:relatedMatch openehr:legal_gender .
 
@@ -897,7 +948,8 @@ openehr:administrative_gender rdf:type owl:Class ;
 
 ###  https://ckm.openehr.org/ckm/archetypes/birth_date
 openehr:birth_date rdf:type owl:Class ;
-                   skos:broadMatch pheno:individual_date_of_birth ,
+                   skos:broadMatch :DateOfBirthDataElement ,
+                                   pheno:individual_date_of_birth ,
                                    cdisc:cdash_brthdat ;
                    skos:narrowMatch fhir:birth_date ,
                                     omop:year_of_birth .
@@ -950,6 +1002,7 @@ openehr:birth_date rdf:type owl:Class ;
 ###  https://ckm.openehr.org/ckm/archetypes/diagnosis_name
 openehr:diagnosis_name rdf:type owl:Class ;
                        skos:broadMatch fhir:condition_code ,
+                                       :DiagnosisDataElement ,
                                        omop:condition_concept_id ,
                                        cdisc:mhterm_diagnosis ;
                        skos:narrowMatch pheno:disease_term .
@@ -999,9 +1052,20 @@ openehr:diagnosis_name rdf:type owl:Class ;
  ] .
 
 
+###  https://ckm.openehr.org/ckm/archetypes/female
+openehr:female rdf:type owl:Class ;
+               owl:equivalentClass openehr:sex_assigned_at_birth .
+
+
+###  https://ckm.openehr.org/ckm/archetypes/intersex
+openehr:intersex rdf:type owl:Class ;
+                 owl:equivalentClass openehr:sex_assigned_at_birth .
+
+
 ###  https://ckm.openehr.org/ckm/archetypes/legal_gender
 openehr:legal_gender rdf:type owl:Class ;
-                     skos:broadMatch omop:observation_concept_id_as_gender ;
+                     skos:broadMatch :SexOrGenderDataElement ,
+                                     omop:observation_concept_id_as_gender ;
                      skos:relatedMatch fhir:administrative_gender ,
                                        openehr:administrative_gender .
 
@@ -1039,9 +1103,15 @@ openehr:legal_gender rdf:type owl:Class ;
  ] .
 
 
+###  https://ckm.openehr.org/ckm/archetypes/male
+openehr:male rdf:type owl:Class ;
+             owl:equivalentClass openehr:sex_assigned_at_birth .
+
+
 ###  https://ckm.openehr.org/ckm/archetypes/medication_summary
 openehr:medication_summary rdf:type owl:Class ;
-                           skos:broadMatch omop:drug_concept_id ,
+                           skos:broadMatch :MedicationDataElement ,
+                                           omop:drug_concept_id ,
                                            pheno:treatment_agent ;
                            skos:exactMatch fhir:medication ,
                                            cdisc:cdash_cmtrt .
@@ -1094,6 +1164,7 @@ openehr:medication_summary rdf:type owl:Class ;
 ###  https://ckm.openehr.org/ckm/archetypes/sex_assigned_at_birth
 openehr:sex_assigned_at_birth rdf:type owl:Class ;
                               skos:broadMatch fhir:birth_sex ,
+                                              :SexOrGenderDataElement ,
                                               omop:gender_concept_id ,
                                               cdisc:sdtm_sex ;
                               skos:relatedMatch pheno:karyotypic_sex .
@@ -1146,6 +1217,7 @@ openehr:sex_assigned_at_birth rdf:type owl:Class ;
 ###  https://ckm.openehr.org/ckm/archetypes/systolic
 openehr:systolic rdf:type owl:Class ;
                  skos:broadMatch fhir:systolic ,
+                                 :SystolicBloodPressureDataElement ,
                                  omop:measurement_concept_systolic_blood_pressure ;
                  skos:exactMatch pheno:typed_quantity_systolic_blood_pressure ,
                                  cdisc:sdtm_vstestcd_sysbp .
@@ -1197,6 +1269,7 @@ openehr:systolic rdf:type owl:Class ;
 
 ###  https://ohdsi.github.io/CommonDataModel/condition_concept_id
 omop:condition_concept_id rdf:type owl:Class ;
+                          skos:broadMatch :DiagnosisDataElement ;
                           skos:exactMatch fhir:condition_code ,
                                           cdisc:mhterm_diagnosis ;
                           skos:narrowMatch openehr:diagnosis_name ,
@@ -1249,6 +1322,7 @@ omop:condition_concept_id rdf:type owl:Class ;
 
 ###  https://ohdsi.github.io/CommonDataModel/drug_concept_id
 omop:drug_concept_id rdf:type owl:Class ;
+                     skos:broadMatch :MedicationDataElement ;
                      skos:exactMatch pheno:treatment_agent ;
                      skos:narrowMatch fhir:medication ,
                                       openehr:medication_summary ,
@@ -1301,11 +1375,42 @@ omop:drug_concept_id rdf:type owl:Class ;
 
 ###  https://ohdsi.github.io/CommonDataModel/gender_concept_id
 omop:gender_concept_id rdf:type owl:Class ;
-                       skos:broadMatch fhir:birth_sex ;
+                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                             owl:onProperty sio:SIO_000217 ;
+                                             owl:someValuesFrom <https://athena.ohdsi.org/search-terms/terms/8507>
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty sio:SIO_000217 ;
+                                             owl:someValuesFrom <https://athena.ohdsi.org/search-terms/terms/8532>
+                                           ] ;
+                       skos:broadMatch fhir:birth_sex ,
+                                       :SexOrGenderDataElement ;
                        skos:narrowMatch openehr:sex_assigned_at_birth ,
                                         pheno:karyotypic_sex ,
                                         pheno:sex ,
                                         cdisc:sdtm_sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource omop:gender_concept_id ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
+   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
+ ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource omop:gender_concept_id ;
@@ -1340,31 +1445,10 @@ omop:gender_concept_id rdf:type owl:Class ;
    sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
  ] .
 
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource omop:gender_concept_id ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget openehr:sex_assigned_at_birth ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
-   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
- ] .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource omop:gender_concept_id ;
-   owl:annotatedProperty skos:narrowMatch ;
-   owl:annotatedTarget pheno:karyotypic_sex ;
-   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
-   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
-   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
-   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
-   sssom:subject_label "The biological sex of a person at birth.  "^^xsd:string
- ] .
-
 
 ###  https://ohdsi.github.io/CommonDataModel/measurement_concept_systolic_blood_pressure
 omop:measurement_concept_systolic_blood_pressure rdf:type owl:Class ;
+                                                 skos:broadMatch :SystolicBloodPressureDataElement ;
                                                  skos:exactMatch fhir:systolic ;
                                                  skos:narrowMatch openehr:systolic ,
                                                                   pheno:typed_quantity_systolic_blood_pressure ,
@@ -1417,6 +1501,7 @@ omop:measurement_concept_systolic_blood_pressure rdf:type owl:Class ;
 
 ###  https://ohdsi.github.io/CommonDataModel/observation_concept_id_as_gender
 omop:observation_concept_id_as_gender rdf:type owl:Class ;
+                                      skos:broadMatch :SexOrGenderDataElement ;
                                       skos:narrowMatch fhir:administrative_gender ,
                                                        openehr:administrative_gender ,
                                                        openehr:legal_gender .
@@ -1457,7 +1542,8 @@ omop:observation_concept_id_as_gender rdf:type owl:Class ;
 
 ###  https://ohdsi.github.io/CommonDataModel/person_death_datetime
 omop:person_death_datetime rdf:type owl:Class ;
-                           skos:broadMatch pheno:vital_status ,
+                           skos:broadMatch :VitalStatusDataElement ,
+                                           pheno:vital_status ,
                                            cdisc:survstat ;
                            skos:exactMatch fhir:patient_deceased .
 
@@ -1497,7 +1583,8 @@ omop:person_death_datetime rdf:type owl:Class ;
 
 ###  https://ohdsi.github.io/CommonDataModel/year_of_birth
 omop:year_of_birth rdf:type owl:Class ;
-                   skos:broadMatch openehr:birth_date ,
+                   skos:broadMatch :DateOfBirthDataElement ,
+                                   openehr:birth_date ,
                                    pheno:individual_date_of_birth ,
                                    cdisc:cdash_brthdat ;
                    skos:relatedMatch fhir:birth_date .
@@ -1547,9 +1634,85 @@ omop:year_of_birth rdf:type owl:Class ;
  ] .
 
 
+###  https://phenopacket-schema.readthedocs.io/FEMALE
+pheno:FEMALE rdf:type owl:Class ;
+             owl:equivalentClass pheno:sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/MALE
+pheno:MALE rdf:type owl:Class ;
+           owl:equivalentClass pheno:sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/OTHER_KARYOTYPE
+pheno:OTHER_KARYOTYPE rdf:type owl:Class ;
+                      owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/OTHER_SEX
+pheno:OTHER_SEX rdf:type owl:Class ;
+                owl:equivalentClass pheno:sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/UNKNOWN_KARYOTYPE
+pheno:UNKNOWN_KARYOTYPE rdf:type owl:Class ;
+                        owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/UNKNOWN_SEX
+pheno:UNKNOWN_SEX rdf:type owl:Class ;
+                  owl:equivalentClass pheno:sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XO
+pheno:XO rdf:type owl:Class ;
+         owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XX
+pheno:XX rdf:type owl:Class ;
+         owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XXX
+pheno:XXX rdf:type owl:Class ;
+          owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XXXX
+pheno:XXXX rdf:type owl:Class ;
+           owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XXXY
+pheno:XXXY rdf:type owl:Class ;
+           owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XXY
+pheno:XXY rdf:type owl:Class ;
+          owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XXYY
+pheno:XXYY rdf:type owl:Class ;
+           owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XY
+pheno:XY rdf:type owl:Class ;
+         owl:equivalentClass pheno:karyotypic_sex .
+
+
+###  https://phenopacket-schema.readthedocs.io/XYY
+pheno:XYY rdf:type owl:Class ;
+          owl:equivalentClass pheno:karyotypic_sex .
+
+
 ###  https://phenopacket-schema.readthedocs.io/disease_term
 pheno:disease_term rdf:type owl:Class ;
                    skos:broadMatch fhir:condition_code ,
+                                   :DiagnosisDataElement ,
                                    openehr:diagnosis_name ,
                                    omop:condition_concept_id ,
                                    cdisc:mhterm_diagnosis .
@@ -1601,6 +1764,7 @@ pheno:disease_term rdf:type owl:Class ;
 
 ###  https://phenopacket-schema.readthedocs.io/individual_date_of_birth
 pheno:individual_date_of_birth rdf:type owl:Class ;
+                               skos:broadMatch :DateOfBirthDataElement ;
                                skos:exactMatch cdisc:cdash_brthdat ;
                                skos:narrowMatch fhir:birth_date ,
                                                 openehr:birth_date ,
@@ -1654,6 +1818,7 @@ pheno:individual_date_of_birth rdf:type owl:Class ;
 ###  https://phenopacket-schema.readthedocs.io/karyotypic_sex
 pheno:karyotypic_sex rdf:type owl:Class ;
                      skos:broadMatch fhir:birth_sex ,
+                                     :SexOrGenderDataElement ,
                                      omop:gender_concept_id ;
                      skos:relatedMatch openehr:sex ,
                                        openehr:sex_assigned_at_birth ,
@@ -1718,6 +1883,7 @@ pheno:karyotypic_sex rdf:type owl:Class ;
 ###  https://phenopacket-schema.readthedocs.io/sex
 pheno:sex rdf:type owl:Class ;
           skos:broadMatch fhir:birth_sex ,
+                          :SexOrGenderDataElement ,
                           omop:gender_concept_id ;
           skos:relatedMatch openehr:sex_assigned_at_birth_sex ,
                             cdisc:sdtm_sex .
@@ -1769,6 +1935,7 @@ pheno:sex rdf:type owl:Class ;
 
 ###  https://phenopacket-schema.readthedocs.io/treatment_agent
 pheno:treatment_agent rdf:type owl:Class ;
+                      skos:broadMatch :MedicationDataElement ;
                       skos:exactMatch omop:drug_concept_id ;
                       skos:narrowMatch fhir:medication ,
                                        openehr:medication_summary ,
@@ -1822,6 +1989,7 @@ pheno:treatment_agent rdf:type owl:Class ;
 ###  https://phenopacket-schema.readthedocs.io/typed_quantity_systolic_blood_pressure
 pheno:typed_quantity_systolic_blood_pressure rdf:type owl:Class ;
                                              skos:broadMatch fhir:systolic ,
+                                                             :SystolicBloodPressureDataElement ,
                                                              omop:measurement_concept_systolic_blood_pressure ;
                                              skos:exactMatch openehr:systolic ,
                                                              cdisc:sdtm_vstestcd_sysbp .
@@ -1873,6 +2041,7 @@ pheno:typed_quantity_systolic_blood_pressure rdf:type owl:Class ;
 
 ###  https://phenopacket-schema.readthedocs.io/vital_status
 pheno:vital_status rdf:type owl:Class ;
+                   skos:broadMatch :VitalStatusDataElement ;
                    skos:exactMatch cdisc:survstat ;
                    skos:narrowMatch fhir:patient_deceased ,
                                     omop:person_death_datetime .
@@ -1913,6 +2082,7 @@ pheno:vital_status rdf:type owl:Class ;
 
 ###  https://www.cdisc.org/cdash_brthdat
 cdisc:cdash_brthdat rdf:type owl:Class ;
+                    skos:broadMatch :DateOfBirthDataElement ;
                     skos:exactMatch pheno:individual_date_of_birth ;
                     skos:narrowMatch fhir:birth_date ,
                                      openehr:birth_date ,
@@ -1965,7 +2135,8 @@ cdisc:cdash_brthdat rdf:type owl:Class ;
 
 ###  https://www.cdisc.org/cdash_cmtrt
 cdisc:cdash_cmtrt rdf:type owl:Class ;
-                  skos:broadMatch omop:drug_concept_id ,
+                  skos:broadMatch :MedicationDataElement ,
+                                  omop:drug_concept_id ,
                                   pheno:treatment_agent ;
                   skos:exactMatch fhir:medication ,
                                   openehr:medication_summary .
@@ -2017,6 +2188,8 @@ cdisc:cdash_cmtrt rdf:type owl:Class ;
 
 ###  https://www.cdisc.org/cdash_sex
 cdisc:cdash_sex rdf:type owl:Class ;
+                owl:equivalentClass cdisc:sdtm_sex ;
+                skos:broadMatch :SexOrGenderDataElement ;
                 skos:exactMatch cdisc:sdtm_sex .
 
 [ rdf:type owl:Axiom ;
@@ -2033,6 +2206,7 @@ cdisc:cdash_sex rdf:type owl:Class ;
 
 ###  https://www.cdisc.org/mhterm_diagnosis
 cdisc:mhterm_diagnosis rdf:type owl:Class ;
+                       skos:broadMatch :DiagnosisDataElement ;
                        skos:exactMatch fhir:condition_code ,
                                        omop:condition_concept_id ;
                        skos:narrowMatch openehr:diagnosis_name ,
@@ -2085,7 +2259,24 @@ cdisc:mhterm_diagnosis rdf:type owl:Class ;
 
 ###  https://www.cdisc.org/sdtm_sex
 cdisc:sdtm_sex rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16576>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C20197>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty sio:SIO_000217 ;
+                                     owl:someValuesFrom <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45908>
+                                   ] ;
                skos:broadMatch fhir:birth_sex ,
+                               :SexOrGenderDataElement ,
                                omop:gender_concept_id ;
                skos:exactMatch cdisc:cdash_sex ;
                skos:narrowMatch openehr:sex_assigned_at_birth ;
@@ -2162,6 +2353,7 @@ cdisc:sdtm_sex rdf:type owl:Class ;
 ###  https://www.cdisc.org/sdtm_vstestcd_sysbp
 cdisc:sdtm_vstestcd_sysbp rdf:type owl:Class ;
                           skos:broadMatch fhir:systolic ,
+                                          :SystolicBloodPressureDataElement ,
                                           omop:measurement_concept_systolic_blood_pressure ;
                           skos:exactMatch openehr:systolic ,
                                           pheno:typed_quantity_systolic_blood_pressure .
@@ -2213,6 +2405,7 @@ cdisc:sdtm_vstestcd_sysbp rdf:type owl:Class ;
 
 ###  https://www.cdisc.org/survstat
 cdisc:survstat rdf:type owl:Class ;
+               skos:broadMatch :VitalStatusDataElement ;
                skos:exactMatch pheno:vital_status ;
                skos:narrowMatch fhir:patient_deceased ,
                                 omop:person_death_datetime .
@@ -2252,8 +2445,104 @@ cdisc:survstat rdf:type owl:Class ;
 
 
 #################################################################
+#    Individuals
+#################################################################
+
+###  http://hl7.org/fhir/birth_sex
+fhir:birth_sex rdf:type owl:NamedIndividual ;
+               sio:SIO_000217 <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F> ,
+                              <http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> ,
+                              <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU> ,
+                              <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH> ,
+                              <http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK> .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F> rdf:type owl:NamedIndividual .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M> rdf:type owl:NamedIndividual .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#ASKU> rdf:type owl:NamedIndividual .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH> rdf:type owl:NamedIndividual .
+
+
+###  http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#UNK> rdf:type owl:NamedIndividual .
+
+
+#################################################################
 #    Annotations
 #################################################################
+
+fhir:birth_sex skos:narrowMatch openehr:sex_assigned_at_birth ;
+               skos:broadMatch :SexOrGenderDataElement ;
+               skos:narrowMatch cdisc:sdtm_sex ,
+                                omop:gender_concept_id ,
+                                pheno:karyotypic_sex ,
+                                pheno:sex .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget openehr:sex_assigned_at_birth ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The sex of an individual determined by anatomical characteristics observed and registered at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget cdisc:sdtm_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The physical difference between male and female of a subject. "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget omop:gender_concept_id ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The biological sex of a person at birth.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:karyotypic_sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The chromosomal sex of an individual.  "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate).  "^^xsd:string
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource fhir:birth_sex ;
+   owl:annotatedProperty skos:narrowMatch ;
+   owl:annotatedTarget pheno:sex ;
+   sssom:creator_id <https://orcid.org/0000-0003-4715-9070> ;
+   sssom:mapping_date "2024-01-29T00:00:00"^^xsd:dateTime ;
+   sssom:mapping_justification <http://w3id.org/semapv/vocab/semapv.owl#ManualMappingCuration> ;
+   sssom:object_label "The phenotypic sex of an individual at birth (and determined by a midwife or physician). "^^xsd:string ;
+   sssom:subject_label "The sex of a person at birth (and recorded on the birth certificate). "^^xsd:string
+ ] .
+
 
 openehr:sex skos:relatedMatch pheno:karyotypic_sex .
 
