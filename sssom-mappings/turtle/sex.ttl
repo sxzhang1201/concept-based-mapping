@@ -40,3 +40,23 @@ openehr:sex
 
 
 
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#M>
+  skos:narrowMatch pheno:XY, pheno:XYY, pheno:XXY, pheno:XXYY, pheno:XXXY .
+
+<http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender#F>
+  skos:exactMatch <https://athena.ohdsi.org/search-terms/terms/8532>,
+                  <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16576>,
+                  pheno:FEMALE,
+                  openehr:female ;
+  skos:narrowMatch pheno:XX, pheno:XXX, pheno:XXXX, pheno:XO.
+
+<http://terminology.hl7.org/CodeSystem/v3-NullFlavor#OTH>
+  skos:narrowMatch <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C45908>,
+                  openehr:intersex ,
+                  pheno:OTHER_KARYOTYPE;
+  skos:exactMatch pheno:OTHER_SEX .
+
+
+
+
+
